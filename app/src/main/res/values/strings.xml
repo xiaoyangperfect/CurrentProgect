@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">AirPPT</string>
+    <string name="app_version_name">1.0.5</string>
+    <string name="app_version">5</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!--首页-->
+    <string name="main_start">点击开始</string>
+    <string name="finish">完成</string>
+    <string name="cancel">取消</string>
+
+    <string name="choice_music">选择背景音乐</string>
+
+    <string name="search_hint">请输入搜索内容</string>
+    <string name="no_music">无音乐</string>
+    <string name="no_password">无密码</string>
+    <string name="input_title">请输入标题</string>
+    <string name="set_cover">请设置封面图片</string>
+    <string name="set_music_cover">设置音乐封面</string>
+    <string name="share_by_music_modle">启用音乐分享</string>
+
+    <string name="login_wechat">微信登录</string>
+    <string name="login_weibo">微博登录</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="share">分享</string>
+    
+    <string name="share_ad">直接使用AirPPT上传，画质更清晰哦</string>
+
+    <string name="title">标题</string>
+    <string name="share_content">分享内容</string>
+    <string name="input_share_content">请输入分享内容</string>
+    <string name="share_success">分享成功!</string>
+    <string name="share_false">分享失败!</string>
+    <string name="share_cancel">分享取消!</string>
+
+    <string name="update_password_success">修改密码成功！</string>
+    <string name="update_password_false">修改密码失败！</string>
+
+    <string name="setting">设置</string>
+    <string name="personal_info_edit">个人信息编辑</string>
+    <string name="clean_cache">清理缓存</string>
+    <string name="fade_back">意见反馈</string>
+    <string name="about_us">关于我们</string>
+    <string name="logout">退出登录</string>
+    <string name="use_protocol">服务使用协议</string>
+    <string name="clean_cache_success">清除缓存成功!</string>
+    <string name="clean_cache_false">清除缓存失败!</string>
+
+    <string name="personal_info">个人信息</string>
+    <string name="head_image">头像</string>
+    <string name="nick_name">昵称</string>
+    <string name="qr_code">二维码</string>
+    <string name="personalized_signature">个性签名</string>
+    <string name="say_some_thing">来来来留下点什么吧~</string>
+    <string name="input_out_bande">输入了太多的文字，我记不住啦！</string>
+
+
+    <string name="current_version">当前版本</string>
+    <string name="take_score_for_us">给我们评分</string>
+
+    <string name="save">保存</string>
+    <string name="input_nickname">请输入昵称</string>
+    <string name="save_fale">保存失败！</string>
+    <string name="save_success">保存成功!</string>
+
+    <string name="photo_crop">截取图片</string>
+    <string name="about_me">我的相关</string>
+
+    <string name="add_page_fale">添加页面数目已达上限!</string>
+    
+    <string name="prompt">提示</string>
+    <string name="file_mis_sure_to_delete">文件已丢失，是否要删除此作品？</string>
+    <string name="delete">删除</string>
+    <string name="sure_to_delete">是否要删除此作品？</string>
+    <string name="sure_to_delete_page">确定要删除此页？</string>
+
+    <string name="exist_work">退出当前作品</string>
+    <string name="exist_prompt">请选择保存修改内容还是放弃修改内容</string>
+
+    <string name="give_up">放弃</string>
+
+    <string name="sure_to_exist">您是要退出AirPPT吗？</string>
+    <string name="exist">退出</string>
+
+    <string name="chose_ainum">选择相册</string>
+    <string name="chose_photo">选择图片</string>
+
+    <string name="chose_cover">选择封面</string>
+
+    <string name="edit_clear">清除</string>
+    <string name="load_sucess">登陆成功!</string>
+    <string name="load_fail">登陆失败!</string>
+    <string name="cannot_find_wechat">未安装微信！</string>
+</resources>

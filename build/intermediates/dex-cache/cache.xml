@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.umeng\message\2.4.1\jars\libs\com.umeng.message.lib_v2.4.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2e43bd4164f510a6b4be65f569356d79237b36ed">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.umeng.message.lib_v2.4.1_ed218b0c066527c0c05656bebf95df0a66f8db5d.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.android.support-recyclerview-v7-21.0.3_6a335ecf5662c40a8adbeaf2a242451e6fcc7196.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-QQ-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="709cf3dfb468faf7d2b340deaf4e7f45f9de4e30">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-QQ-2.6.1_38623b5ddfc6e026cd2d8d57a7299668328f34ca.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\jp.co.cyberagent.android.gpuimage\gpuimage-library\1.2.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a93454051575c128e7819b068748c7a9b95c6857">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\jp.co.cyberagent.android.gpuimage-gpuimage-library-1.2.3_81007a5f0de6850360fc8b32c683c086ae221de6.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Wechat-Moments-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5663cf8a7e19f53eb43eb26b4c2051a9298b789d">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Wechat-Moments-2.6.1_e8612c4620361b845ded3c0fcf217015a97963ef.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Wechat-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="cc280ae2e35362f52f69abc8c0880eaad75a6b98">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Wechat-2.6.1_49bdcff537ee2385c399dc33ad5aaeb674bc9c1c.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.android.support-cardview-v7-21.0.3_6934b92a89e68e38e849d8b2c764b18f84a98603.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.umeng\message\2.4.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="29939a737c58fd8eb96e3a9eda9ecccb1817edd2">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.umeng-message-2.4.1_9c552c5e0fff31e0e434660fb7972f47daebfdba.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\MobTools.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c9107069ca744840137b9b0fad95d5f57d8d9491">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\MobTools_3845ddafea81cb52fd5dd91f408ca38bd6a7fcf7.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\httpcore-4.3.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="31fbbff1ddbf98f3aa7377c94d33b0447c646b6e">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\httpcore-4.3.2_b96b7d7316cfe7b73cdec97902ec86df0abeb9e2.jar" />
+    </item>
+    <item
+        jar="C:\Users\user\.gradle\caches\modules-2\files-2.1\com.umeng.analytics\analytics\5.6.1\b2705cbb19f52bb4d242458163a98d9e889c1292\analytics-5.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b2705cbb19f52bb4d242458163a98d9e889c1292">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\analytics-5.6.1_0e638a848b562c7a0065e3a63829a8ffba71496f.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.android.support-support-v4-22.2.0_0ba55397e7471ac8d01c1ea25b37689e43cf4170.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-TencentWeibo-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57522217bb34a1000881302e74b1ef2208e65cf2">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-TencentWeibo-2.6.1_2df9cbb23555afbbd9f7e0d1f0702aee57762ca1.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-QZone-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1e3749d839864304229a1165f662a429d17241a3">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-QZone-2.6.1_450391ca613f05c90b1861d555c0906defd85503.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\libammsdk.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="db6144f812752e2f62b8811c8b9d5e4346fff151">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\libammsdk_a270c706b2f0037575a6c9c881a773acc512823b.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\android-async-http-1.4.5_1b0678382d974440245a989889aa6b2be95d4265.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Email-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="66a1997cfc560663d7205d597b48d088897f22ba">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Email-2.6.1_13541031bce3885f103d4646585670444289993d.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\httpmime-4.3.5.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1dd0d38df9c6d21e893f2e52403f1cd99e91cd81">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\httpmime-4.3.5_d24fad540d7df31a1cdcf0b06488dfb82a8e0468.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.github.navasmdc\MaterialDesign\1.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="12b228574de7977e56e41cbfb385b1463bbdb41a">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.github.navasmdc-MaterialDesign-1.5_57333828f1a1f6d5118ab8e468a63476c53ddb3c.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\universal-image-loader-1.9.4_9bb9d8fa91db0415537dcbb0972b63ab4503612f.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\gson-2.2.4_b84b521278fb674f0d2d63ed2069d27c91bdda21.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\FlurryAnalytics-6.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="95c790df275e486e1a902844d320dae831924fdc">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\FlurryAnalytics-6.0.0_59b6fde4784558964eafdec8d70e901ab26859ab.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-SinaWeibo-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b119f644319636ab1806b48fe46020adc36e6643">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-SinaWeibo-2.6.1_d7259419e9e2a9ccc22dd4e8d828cb86b0ace44d.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Wechat-Favorite-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="65737d9d3cb99ef72493b19112067066bbd211bd">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Wechat-Favorite-2.6.1_af9aba5f6cb2de772e2a7e6a36fb482964e3a72a.jar" />
+    </item>
+    <item
+        jar="C:\Users\user\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\support-annotations-22.2.0_718687d023ab9571473b1b3942d832fd42bb1c54.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\internal_impl-22.2.0_33ac1c0ee459bca4375fc9440d32bed2b2874b87.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.android.support-appcompat-v7-21.0.3_2b5e51d2c310e28f28e192e1928a9649c9008a01.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Facebook-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a8286736ffed91d3c6bdd9c0bffbd86fcc01fb4c">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Facebook-2.6.1_11f21776891e6c5e0f440a4db8b5f2dc342f91ce.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\exploded-aar\com.umeng\fb\5.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="30447d190372c4ad8ecec92ccb510bfaadf4f603">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\com.umeng-fb-5.4.0_ab4144b888c4179c3f42d6d337340dada0fab40a.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\Volley.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="77faa9ffd189160d1e22c58fdf5eed0a9a08b816">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\Volley_66186f7b53bee4d6add242e6ff1a08fb79fd2f49.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\MobLogCollector.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c804b0e7238e94bb9c89381c90336116509473d7">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\MobLogCollector_0797708d0f35aa5f6f5d22ee32a19d33ed1e0dbd.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-ShortMessage-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c5346a4307fd0bb1329c7ce3b2f778c2cb56fe40">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-ShortMessage-2.6.1_190db673b5667fba0b8948422efde966f74ec0ff.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Core-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="da6215cd1f64dd814f2f646a3d4b088c70d0587e">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Core-2.6.1_14d000c1629307fca033f04c6eda7c56ca58a2a1.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Wechat-Core-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e27ab7ede987ff7bdac4979741c9f7c2e3254de7">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Wechat-Core-2.6.1_296ab50885266ff7c0406b7ea5e6e972e0ada78a.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\nineoldandroids-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="59f19e43354d32de831379c23ce03bb259a4c2b7">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\nineoldandroids-2.4.0_a37f5abd97db5acc1ffa5fc47c7994a6ae032665.jar" />
+    </item>
+    <item
+        jar="D:\NewWorkSpace\AirPPT\AirPPT\app\libs\ShareSDK-Twitter-2.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7317f0612056018e49c94410e9fcb9f20e3202eb">
+        <dex dex="D:\NewWorkSpace\AirPPT\AirPPT\app\build\intermediates\pre-dexed\release\ShareSDK-Twitter-2.6.1_c978f829d1a75d336268f876f7fe4fdd70ffcab3.jar" />
+    </item>
+
+</items>

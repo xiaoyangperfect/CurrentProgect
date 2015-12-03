@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="@dimen/base_item_padding"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:id="@+id/item_base_view_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="123"
+            android:textSize="16dp"
+            android:textColor="#606366"
+            android:id="@+id/item_base_view_tv_1" />
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:layout_margin="@dimen/main_class_select_padding_size">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:id="@+id/item_base_picture"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/item_base_picture"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:singleLine="true"
+                android:layout_marginRight="50dp"
+                android:textSize="@dimen/item_base_view_text_2"
+                android:text="pinterest"
+                android:textColor="#7e4edf"
+                android:id="@+id/item_base_view_tv_2" />
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="16dp"
+                android:id="@+id/item_base_view_love"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/item_base_view_love_num"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/love"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/item_base_view_text_2"
+                android:id="@+id/item_base_view_love_num"
+                android:layout_centerVertical="true"
+                android:text="32"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+                android:id="@+id/item_base_view_message" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/item_base_view_text_2"
+                android:id="@+id/item_base_view_message_num"
+                android:visibility="gone"
+                android:text="32"
+                android:textColor="@android:color/darker_gray" />
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

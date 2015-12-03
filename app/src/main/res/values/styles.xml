@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/theme_window_background</item>
+        <item name="android:windowAnimationStyle">@style/windowsAnimation</item>
+    </style>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/theme_default_primary</item>
+        <item name="colorPrimaryDark">@color/theme_default_primary_dark</item>
+        <item name="colorAccent">@color/theme_accent</item>
+        <item name="android:windowBackground">@color/theme_window_background</item>
+        <item name="android:windowAnimationStyle">@style/windowsAnimation</item>
+    </style>
+
+    <style name="windowsAnimation" parent="@android:style/Animation.Activity">
+
+
+        <item name="android:activityOpenEnterAnimation">@anim/left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/left_out</item>
+    </style>
+
+    <!--<item name="android:activityCloseEnterAnimation">@anim/left_in</item>-->
+    <!--<item name="android:activityCloseExitAnimation">@anim/left_out</item>-->
+    <style name="popupwindowStyle">
+        <item name="android:windowEnterAnimation">@anim/alpha_in</item>
+        <item name="android:windowExitAnimation">@anim/alpha_out</item>
+    </style>
+
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+</resources>

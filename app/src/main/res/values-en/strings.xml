@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AirPPT</string>
+    <string name="app_version_name">1.0.5</string>
+    <string name="app_version">5</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!--首页-->
+    <string name="main_start">Start</string>
+    <string name="finish">Finish</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="choice_music">Choose music</string>
+
+    <string name="search_hint">Search</string>
+    <string name="no_music">Without music</string>
+    <string name="no_password">Unlimited access</string>
+    <string name="input_title">Title</string>
+    <string name="set_cover">Cver picture</string>
+    <string name="set_music_cover">Disc style</string>
+    <string name="share_by_music_modle">启用音乐分享</string>
+
+    <string name="login_wechat">LOG IN WITH WECHAT</string>
+    <string name="login_weibo">LOG IN WITH WEIBO</string>
+    <string name="login">LOG IN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="share">Share</string>
+
+    <string name="share_ad"></string>
+
+    <string name="title">Title</string>
+    <string name="share_content">Description</string>
+    <string name="input_share_content">Description</string>
+    <string name="share_success">Sent!</string>
+    <string name="share_false">Fail!</string>
+    <string name="share_cancel">Cancel!</string>
+
+    <string name="update_password_success">Password updated！</string>
+    <string name="update_password_false">Fail！</string>
+
+    <string name="setting">Setting</string>
+    <string name="personal_info_edit">Edit profile</string>
+    <string name="clean_cache">Clear cache</string>
+    <string name="fade_back">Feedback</string>
+    <string name="about_us">About us</string>
+    <string name="logout">Log out</string>
+    <string name="use_protocol">Terms and privacy</string>
+    <string name="clean_cache_success">Cache cleared!</string>
+    <string name="clean_cache_false">Clear cache fail!</string>
+
+    <string name="personal_info">Profile</string>
+    <string name="head_image">Picture</string>
+    <string name="nick_name">Username</string>
+    <string name="qr_code">QR Code</string>
+    <string name="personalized_signature">About you</string>
+    <string name="say_some_thing">Description</string>
+    <string name="input_out_bande">Input too much！</string>
+
+
+    <string name="current_version">Current version</string>
+    <string name="take_score_for_us">Rating for Airppt</string>
+
+    <string name="save">Save</string>
+    <string name="input_nickname">Username</string>
+    <string name="save_fale">Save failed！</string>
+    <string name="save_success">Saved!</string>
+
+    <string name="photo_crop">Capture picture</string>
+    <string name="about_me">Profile</string>
+
+    <string name="add_page_fale">Pages reached max limitation!</string>
+
+    <string name="prompt">Hint</string>
+    <string name="file_mis_sure_to_delete">Local files lost，do you want to drop it？</string>
+    <string name="delete">Delete</string>
+    <string name="sure_to_delete">Confirm this will be deleted.</string>
+    <string name="sure_to_delete_page">Confirm this page will be deleted.</string>
+
+    <string name="exist_work">Quit current work</string>
+    <string name="exist_prompt">Do you want to save this operation?</string>
+
+    <string name="give_up">Give up</string>
+
+    <string name="sure_to_exist">Please confirm quit AirPPT.</string>
+    <string name="exist">Quit</string>
+
+    <string name="chose_ainum">Choose album</string>
+    <string name="chose_photo">Choose picture</string>
+
+    <string name="chose_cover">Choose cover</string>
+
+    <string name="edit_clear">Clear</string>
+    <string name="load_sucess">Load Success!</string>
+    <string name="load_fail">Load failed!</string>
+    <string name="cannot_find_wechat">not found Wechat!</string>
+</resources>

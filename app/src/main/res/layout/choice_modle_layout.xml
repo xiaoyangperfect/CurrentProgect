@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/material_blue_grey_800"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/choice_modle_recyclerview"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/choice_modle_progressbar"
+        android:layout_centerInParent="true"
+        style="?android:attr/progressBarStyleLarge"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/change_modle"
+            android:onClick="changeModle"
+            android:textStyle="bold"
+            android:padding="@dimen/abc_action_bar_default_padding_material"
+            android:textSize="@dimen/abc_text_size_title_material"
+            android:text="切换模板"
+            android:textColor="@color/accent_material_light"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/preview"
+            android:onClick="previewEffect"
+            android:textStyle="bold"
+            android:padding="@dimen/abc_action_bar_default_padding_material"
+            android:textSize="@dimen/abc_text_size_title_material"
+            android:text="预览效果"
+            android:textColor="@color/accent_material_light"/>
+    </LinearLayout>
+
+</RelativeLayout>

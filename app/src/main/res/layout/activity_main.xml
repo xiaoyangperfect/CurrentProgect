@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_above="@android:id/tabhost"
+        android:id="@+id/realtabcontent"/>
+
+    <android.support.v4.app.FragmentTabHost
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/tab_bg"
+        android:id="@android:id/tabhost">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:layout_gravity="center_vertical"
+            android:id="@android:id/tabcontent" />
+    </android.support.v4.app.FragmentTabHost>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/mainpage_mod1"
+        android:visibility="gone"/>
+        <!--android:background="@mipmap/mod_1"/>-->
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/account_mod"
+        android:visibility="gone"/>
+        <!--android:background="@mipmap/mod_2"/>-->
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/account_mod7"
+        android:visibility="gone"/>
+        <!--android:background="@mipmap/mod_7"/>-->
+</RelativeLayout>

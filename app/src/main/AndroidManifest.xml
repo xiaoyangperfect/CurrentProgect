@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.airppt.airppt">
+
+    <application
+        android:allowBackup="true"
+        android:name="com.airppt.airppt.MyApplication"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <activity
+            android:name="com.airppt.airppt.activity.WelcomeActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.airppt.airppt.activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.PhotoPathShowActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.AllPhotoShowActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.ChoiceModelActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.ChoicePhotoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.ChoseAibumActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.ChosePhotoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.PhotoCropActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.ShareActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.PersonalInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.UserGuideActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.TempEditV3Activity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.airppt.airppt.wxapi.WXEntryActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent"
+            android:exported="true"/>
+        <activity android:name="com.airppt.airppt.activity.ChangeMusicActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.AboutUsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.airppt.airppt.activity.ProtocolActivity"
+            android:screenOrientation="portrait"/>
+
+
+        <!-- umeng share -->
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name="com.umeng.fb.ConversationActivity"
+            android:launchMode="singleTop"/>
+        <meta-data
+            android:value="5595197767e58ee641003200"
+            android:name="UMENG_APPKEY"/>
+        <meta-data android:value="QQ" android:name="UMENG_CHANNEL"/>
+
+
+        <activity android:name="com.airppt.airppt.activity.CustomUserFadebackActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <meta-data android:name="Adapter" android:value="cn.sharesdk.demo.MyAdapter" />
+            <intent-filter>
+                <data android:scheme="tencent1104792534" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 获取用户手机的IMEI，用来唯一的标识用户 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- QQ、QQ空间所需权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+</manifest>
