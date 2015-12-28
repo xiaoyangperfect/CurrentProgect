@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AirPPT</string>
-    <string name="app_version_name">1.0.5</string>
-    <string name="app_version">5</string>
+    <string name="app_version_name">1.0.7</string>
+    <string name="app_version">6</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

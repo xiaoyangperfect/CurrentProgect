@@ -34,7 +34,9 @@ public class WorkV2 {
     //h5datajs路径
     public String dataJsPath;
 
+    //html名称
     public String htmlFileName;
+    //js名称
     public String dataJsFileName;
 
 
@@ -146,9 +148,10 @@ public class WorkV2 {
     //创建模式下,有本地文件，无namepool本地文件
     public WorkV2(String path, String orgPath, String orgH5data, Long miKey, boolean finished, String baseUrl) {
         pool = new NamePoolV2(miKey, path, finished, null);
-        htmlFileName = pool.getUseableNameParam().getName() + ".html";
-        dataJsFileName = pool.getUseableNameParam().getName() + ".js";
+        htmlFileName = pool.htmlName + ".html";
+        dataJsFileName = pool.jsName + ".js";
         init(path, orgPath, orgH5data, baseUrl);
+        jsPage = TempEditUtil.getPageInfo(dataJsPath);
         ArrayList<HashMap> hpages = TempEditUtil.getDataFromH5data(jsPage);
         initPage(false, hpages);
     }
@@ -159,6 +162,7 @@ public class WorkV2 {
         htmlFileName = pool.htmlName + ".html";
         dataJsFileName = pool.jsName + ".js";
         init(path, orgPath, orgH5data, baseUrl);
+        jsPage = TempEditUtil.getPageInfo(dataJsPath);
         ArrayList<HashMap> hpages = TempEditUtil.getDataFromH5data(jsPage);
         initPage(false, hpages);
     }
@@ -196,7 +200,7 @@ public class WorkV2 {
         this.orgPath = orgPath;
         htmlPath = path + "/" + htmlFileName;
         dataJsPath = path + "/" + dataJsFileName;
-        jsPage = TempEditUtil.getPageInfo(dataJsPath);
+//        jsPage = TempEditUtil.getPageInfo(dataJsPath);
         pages = new ArrayList<>();
 //        orgPages = TempEditUtil.getDataFromH5data(orgPath + "/" + orgH5data);
         JsPage jsPage1 = TempEditUtil.getPageInfo(orgPath + "/" + orgH5data);

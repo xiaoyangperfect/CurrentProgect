@@ -23,22 +23,22 @@ public class UserGuideActivity extends BaseActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        VideoView videoView = (VideoView) findViewById(R.id.userguide_videoview);
-        String uri = "android.resource://" + getPackageName() + "/" + R.raw.welcome;
-        videoView.setVideoURI(Uri.parse(uri));
-        videoView.start();
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-//                SharedPreferenceUtil.getSharedEditor(UserGuideActivity.this).putString(
-//                        SharedPreferenceUtil.IS_FIRST_LOAD, getString(R.string.app_version)
-//                ).commit();
-                Util.showStatusBar(UserGuideActivity.this);
-                Intent intent = new Intent(UserGuideActivity.this, MainActivity.class);
-                startActivity(intent);
-                UserGuideActivity.this.finish();
-            }
-        });
+//        VideoView videoView = (VideoView) findViewById(R.id.userguide_videoview);
+//        String uri = "android.resource://" + getPackageName() + "/" + R.raw.welcome;
+//        videoView.setVideoURI(Uri.parse(uri));
+//        videoView.start();
+//        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+////                SharedPreferenceUtil.getSharedEditor(UserGuideActivity.this).putString(
+////                        SharedPreferenceUtil.IS_FIRST_LOAD, getString(R.string.app_version)
+////                ).commit();
+//                Util.showStatusBar(UserGuideActivity.this);
+//                Intent intent = new Intent(UserGuideActivity.this, MainActivity.class);
+//                startActivity(intent);
+//                UserGuideActivity.this.finish();
+//            }
+//        });
     }
 
 }

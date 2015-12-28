@@ -586,6 +586,41 @@ public class TempEditV3Activity extends BaseActivity {
 
     }
 
+
+
+    private void setListener() {
+        inputEdittext.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                inputTextNum.setText(s.length() + "/100");
+                if (s.length() > 100) {
+                    inputEdittext.setTextColor(Color.RED);
+                } else {
+                    inputEdittext.setTextColor(Color.WHITE);
+                }
+                if (s.length() == 0) {
+                    editFinish.setText(R.string.cancel);
+                } else {
+                    editFinish.setText(R.string.finish);
+                }
+            }
+        });
+        editTextFocusListener();
+    }
+
+
+
+
     private void getMikey() {
         String miKeyUrl = HttpConfig.CREATEUNDONEWORK;
         RequestParams params = RequestParam.getRequestParams(TempEditV3Activity.this);
@@ -738,7 +773,6 @@ public class TempEditV3Activity extends BaseActivity {
             return;
         }
 
-//        backUpWorkByEdit();
         initAddPagePopWindow();
         initSort();
         initPreview();
@@ -746,42 +780,6 @@ public class TempEditV3Activity extends BaseActivity {
         setListener();
         prepareViewDate();
         initJsConfig();
-    }
-
-    private void backUpWorkByEdit() {
-        if (!isCreate) {
-            FileUtil.copyDir(this, workPath, FileUtil.BACKUP_PATH);
-        }
-    }
-
-    private void setListener() {
-        inputEdittext.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                inputTextNum.setText(s.length() + "/100");
-                if (s.length() > 100) {
-                    inputEdittext.setTextColor(Color.RED);
-                } else {
-                    inputEdittext.setTextColor(Color.WHITE);
-                }
-                if (s.length() == 0) {
-                    editFinish.setText(R.string.cancel);
-                } else {
-                    editFinish.setText(R.string.finish);
-                }
-            }
-        });
-        editTextFocusListener();
     }
 
 
@@ -2251,6 +2249,7 @@ public class TempEditV3Activity extends BaseActivity {
                                 @Override
                                 public void onSuccess(int i, Header[] headers, byte[] bytes) {
                                     super.onSuccess(i, headers, bytes);
+                                    Log.e("TempEdit", i + "");
                                     work.pool.setNameParamUploadState(name.substring(0, name.lastIndexOf(".")), true);
                                     Log.e("TempEdit", name + " set upload state true");
                                 }
@@ -2311,7 +2310,7 @@ public class TempEditV3Activity extends BaseActivity {
         for (int i = 0; i < work.pool.getUsedNameParams().size(); i++) {
             if (!work.pool.getUsedNameParams().get(i).getIsUpload()) {
                 map.put(i + "", work.pool.getUsedNameParams().get(i).getName());
-                work.pool.getUsedNameParams().get(i).setIsUpload(true);
+//                work.pool.getUsedNameParams().get(i).setIsUpload(true);
                 Log.e("uploadwork", work.pool.getUsedNameParams().get(i).getName());
             }
 
@@ -2390,12 +2389,6 @@ public class TempEditV3Activity extends BaseActivity {
                     textContent.setContent(hashMap.get(key));
                     textContents.add(textContent);
                 }
-//                if (key.contains("img")) {
-//                    tempFile = new TempFile();
-//                    tempFile.setPath(hashMap.get(key));
-//                    tempFile.setTag("");
-//                    fileListUploadconfig.add(tempFile);
-//                }
             }
         }
 
@@ -2404,8 +2397,6 @@ public class TempEditV3Activity extends BaseActivity {
         FileUtil.writeData(FileUtil.UPLOAD_PATH + "/" + miKey + "/config.txt", configJson);
 
         updateWorkDetial(isCreateWork);
-
-
     }
 
 

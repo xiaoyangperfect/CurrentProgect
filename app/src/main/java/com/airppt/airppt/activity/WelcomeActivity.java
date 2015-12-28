@@ -31,7 +31,7 @@ public class WelcomeActivity extends BaseActivity {
                     intentToMain();
                     break;
                 case 3:
-                    Intent intent = new Intent(WelcomeActivity.this, UserGuideActivity.class);
+                    Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                     startActivity(intent);
                     WelcomeActivity.this.finish();
                     break;
@@ -51,11 +51,12 @@ public class WelcomeActivity extends BaseActivity {
         loadImg.setBackgroundResource(R.mipmap.loading_page);
 
         String token = SharedPreferenceUtil.getAccountSharedPreference(this).getString(SharedPreferenceUtil.APP_TOKEN, "");
-        if (!Util.isStringNotEmpty(token)) {
-            delayIntent(3);
-        } else {
+//        if (!Util.isStringNotEmpty(token)) {
+//            delayIntent(3);
+//        } else {
             delayIntent(2);
-        }
+//        }
+
     }
 
     private void delayIntent(final int index) {

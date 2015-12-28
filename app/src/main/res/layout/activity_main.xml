@@ -31,19 +31,5 @@
         android:layout_height="fill_parent"
         android:id="@+id/mainpage_mod1"
         android:visibility="gone"/>
-        <!--android:background="@mipmap/mod_1"/>-->
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/account_mod"
-        android:visibility="gone"/>
-        <!--android:background="@mipmap/mod_2"/>-->
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/account_mod7"
-        android:visibility="gone"/>
-        <!--android:background="@mipmap/mod_7"/>-->
 </RelativeLayout>

@@ -26,7 +26,6 @@ public class MainActivity extends BaseActivity {
     private FragmentTabHost mTabHost;
     private View indicator = null;
     private ImageView modImg;
-    private ImageView modImg2, modImg7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,38 +47,31 @@ public class MainActivity extends BaseActivity {
         mTabHost.addTab(mTabHost.newTabSpec(THREETAB).setIndicator(indicator), FragmentAccount.class, null);
 
         modImg = (ImageView) findViewById(R.id.mainpage_mod1);
-        modImg2 = (ImageView) findViewById(R.id.account_mod);
-        modImg7 = (ImageView) findViewById(R.id.account_mod7);
 
         modImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 modImg.setVisibility(View.GONE);
-                Util.imageRecycle(modImg);
-                SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
-                        SharedPreferenceUtil.MOD1, getString(R.string.app_version)
-                ).commit();
-            }
-        });
+                switch ((String)modImg.getTag()) {
+                    case "mod_1":
+                        SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
+                                SharedPreferenceUtil.MOD1, getString(R.string.app_version)
+                        ).commit();
+                        break;
+                    case "mod_2":
+                        SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
+                                SharedPreferenceUtil.MOD2, getString(R.string.app_version)
+                        ).commit();
+                        break;
+                    case "mod_7":
+                        SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
+                                SharedPreferenceUtil.MOD7, getString(R.string.app_version)
+                        ).commit();
+                        break;
+                }
 
-        modImg2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                modImg2.setVisibility(View.GONE);
-                Util.imageRecycle(modImg2);
-                SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
-                        SharedPreferenceUtil.MOD2, getString(R.string.app_version)
-                ).commit();
-            }
-        });
-        modImg7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                modImg7.setVisibility(View.GONE);
-                Util.imageRecycle(modImg7);
-                SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
-                        SharedPreferenceUtil.MOD7, getString(R.string.app_version)
-                ).commit();
+                Util.imageRecycle(modImg);
+
             }
         });
 
@@ -104,17 +96,20 @@ public class MainActivity extends BaseActivity {
 
     public void showMod1() {
         modImg.setBackgroundResource(R.mipmap.mod_1);
+        modImg.setTag("mod_1");
         modImg.setVisibility(View.VISIBLE);
     }
 
     public void showMod2() {
-        modImg2.setBackgroundResource(R.mipmap.mod_2);
-        modImg2.setVisibility(View.VISIBLE);
+        modImg.setTag("mod_2");
+        modImg.setBackgroundResource(R.mipmap.mod_2);
+        modImg.setVisibility(View.VISIBLE);
     }
 
     public void showMod7() {
-        modImg7.setBackgroundResource(R.mipmap.mod_7);
-        modImg7.setVisibility(View.VISIBLE);
+        modImg.setTag("mod_7");
+        modImg.setBackgroundResource(R.mipmap.mod_7);
+        modImg.setVisibility(View.VISIBLE);
     }
 
     @Override

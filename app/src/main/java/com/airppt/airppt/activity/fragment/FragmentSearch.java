@@ -28,12 +28,12 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.airppt.airppt.activity.TempEditV4Activity;
 import com.gc.materialdesign.views.ProgressBarIndeterminate;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.airppt.airppt.R;
 import com.airppt.airppt.activity.ShareActivity;
-import com.airppt.airppt.activity.TempEditV3Activity;
 import com.airppt.airppt.adapter.GridViewAdapter;
 import com.airppt.airppt.entry.FeedBack;
 import com.airppt.airppt.entry.HotWorkData;
@@ -457,7 +457,7 @@ public class FragmentSearch extends Fragment {
                 if (!Util.isStringNotEmpty(userId)) {
                     Util.toLogin(getActivity());
                 } else {
-                    Intent intent = new Intent(getActivity(), TempEditV3Activity.class);
+                    Intent intent = new Intent(getActivity(), TempEditV4Activity.class);
                     intent.putExtra("imgPath", "");
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("entry", worksEntry);

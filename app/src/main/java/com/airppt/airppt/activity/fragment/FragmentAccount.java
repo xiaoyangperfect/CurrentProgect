@@ -24,6 +24,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.airppt.airppt.activity.TempEditV4Activity;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.gc.materialdesign.widgets.Dialog;
 import com.google.gson.Gson;
@@ -32,7 +33,6 @@ import com.airppt.airppt.MainActivity;
 import com.airppt.airppt.R;
 import com.airppt.airppt.activity.SettingActivity;
 import com.airppt.airppt.activity.ShareActivity;
-import com.airppt.airppt.activity.TempEditV3Activity;
 import com.airppt.airppt.entry.FeedBack;
 import com.airppt.airppt.entry.TempEntry;
 import com.airppt.airppt.entry.TempIdEntry;
@@ -374,7 +374,7 @@ public class FragmentAccount extends Fragment {
     }
 
     private void toTempEditActivity(WorksEntry worksEntry) {
-        Intent intent = new Intent(getActivity(), TempEditV3Activity.class);
+        Intent intent = new Intent(getActivity(), TempEditV4Activity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("entry", worksEntry);
         intent.putExtras(bundle);
@@ -589,7 +589,7 @@ public class FragmentAccount extends Fragment {
         popEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TempEditV3Activity.class);
+                Intent intent = new Intent(getActivity(), TempEditV4Activity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("entry", worksEntry);
                 intent.putExtras(bundle);
