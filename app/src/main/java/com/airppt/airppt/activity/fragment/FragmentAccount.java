@@ -94,11 +94,11 @@ public class FragmentAccount extends Fragment {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    if (SharedPreferenceUtil.getSharedPreference(getActivity()).getString(
-                            SharedPreferenceUtil.MOD2, "0"
-                    ).equals("0")) {
-                        ((MainActivity) getActivity()).showMod2();
-                    } else {
+//                    if (SharedPreferenceUtil.getSharedPreference(getActivity()).getString(
+//                            SharedPreferenceUtil.MOD2, "0"
+//                    ).equals("0")) {
+//                        ((MainActivity) getActivity()).showMod2();
+//                    } else {
                         if (entry == null) {
 
                         } else {
@@ -120,7 +120,7 @@ public class FragmentAccount extends Fragment {
                                 }
                             }
                         }
-                    }
+//                    }
                     break;
                 case 1:
                     TempEntry tempEntry = (TempEntry) msg.obj;
@@ -309,11 +309,11 @@ public class FragmentAccount extends Fragment {
         circleBar = CircleDialogProgressBar.createCircleDialogProgressBar(getActivity());
         if (Util.isStringNotEmpty(SharedPreferenceUtil.getAccountSharedPreference(getActivity()).getString(SharedPreferenceUtil.USERID, ""))) {
             circleBar.show();
-            if (SharedPreferenceUtil.getSharedPreference(getActivity()).getString(
-                    SharedPreferenceUtil.MOD7, "0"
-            ).equals("0")) {
-                ((MainActivity) getActivity()).showMod7();
-            }
+//            if (SharedPreferenceUtil.getSharedPreference(getActivity()).getString(
+//                    SharedPreferenceUtil.MOD7, "0"
+//            ).equals("0")) {
+//                ((MainActivity) getActivity()).showMod7();
+//            }
         }
 //        materialDialog = new MaterialDialog(getActivity());
 //        materialDialog2 = new MaterialDialog(getActivity());
@@ -561,8 +561,14 @@ public class FragmentAccount extends Fragment {
         popView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mWebView.reload();
                 popupWindow.dismiss();
+            }
+        });
+
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                mWebView.reload();
             }
         });
 

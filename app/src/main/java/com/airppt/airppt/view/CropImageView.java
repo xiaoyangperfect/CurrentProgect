@@ -356,6 +356,7 @@ public class CropImageView extends View {
 		Log.e("width", getWidth() + " " + getHeight() + " :" + mDrawableSrc.width() + " " + mDrawableDst.width());
 		Bitmap tmpBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.RGB_565);
 		Canvas canvas = new Canvas(tmpBitmap);
+		canvas.drawColor(Color.WHITE);
 		mDrawable.draw(canvas);
 
 		Matrix matrix=new Matrix();

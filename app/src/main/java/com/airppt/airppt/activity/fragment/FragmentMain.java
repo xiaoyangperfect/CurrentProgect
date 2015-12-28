@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airppt.airppt.activity.TempEditV4Activity;
+import com.flurry.android.FlurryAgent;
 import com.gc.materialdesign.views.ProgressBarIndeterminate;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -66,6 +67,8 @@ import org.apache.http.Header;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -290,6 +293,9 @@ public class FragmentMain extends Fragment {
                 previousTotal = 0;
                 mList.clear();
                 LID = hotWork.getHotTags().get(0).getLID();
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("Hot_lid", LID + "");
+                FlurryAgent.logEvent("HotListShow", map);
                 getListData();
             }
         });
@@ -308,6 +314,9 @@ public class FragmentMain extends Fragment {
                 previousTotal = 0;
                 mList.clear();
                 LID = hotWork.getHotTags().get(1).getLID();
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("Hot_lid", LID + "");
+                FlurryAgent.logEvent("HotListShow", map);
                 getListData();
             }
         });
@@ -326,6 +335,9 @@ public class FragmentMain extends Fragment {
                 previousTotal = 0;
                 mList.clear();
                 LID = hotWork.getHotTags().get(2).getLID();
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("Hot_lid", LID + "");
+                FlurryAgent.logEvent("HotListShow", map);
                 getListData();
             }
         });
@@ -455,15 +467,17 @@ public class FragmentMain extends Fragment {
         adapter.setOnItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if (SharedPreferenceUtil.getSharedPreference(getActivity()).getString(
-                        SharedPreferenceUtil.MOD1, "0"
-                ).equals("0")) {
-                    ((MainActivity)getActivity()).showMod1();
-                } else {
-                    showPopWindow(position-1);
-                    worksEntry = mList.get(position-1);
-                    clickItemIndex = position-1;
-                }
+//                if (SharedPreferenceUtil.getSharedPreference(getActivity()).getString(
+//                        SharedPreferenceUtil.MOD1, "0"
+//                ).equals("0")) {
+//                    ((MainActivity)getActivity()).showMod1();
+//                } else {
+//
+//                }
+                ((MainActivity) getActivity()).showCreateToast();
+                showPopWindow(position-1);
+                worksEntry = mList.get(position-1);
+                clickItemIndex = position-1;
             }
         });
 
@@ -679,7 +693,6 @@ public class FragmentMain extends Fragment {
         popView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mWebView.reload();
                 popupWindow.dismiss();
             }
         });
@@ -693,6 +706,13 @@ public class FragmentMain extends Fragment {
                     userFeedBack(worksEntry.getWorksId());
                 }
 
+            }
+        });
+
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                mWebView.reload();
             }
         });
 

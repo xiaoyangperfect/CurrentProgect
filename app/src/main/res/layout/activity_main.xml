@@ -26,10 +26,10 @@
             android:id="@android:id/tabcontent" />
     </android.support.v4.app.FragmentTabHost>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/mainpage_mod1"
-        android:visibility="gone"/>
+    <!--<ImageView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:id="@+id/mainpage_mod1"-->
+        <!--android:visibility="gone"/>-->
 
 </RelativeLayout>

@@ -51,6 +51,12 @@ public class WelcomeActivity extends BaseActivity {
         loadImg.setBackgroundResource(R.mipmap.loading_page);
 
         String token = SharedPreferenceUtil.getAccountSharedPreference(this).getString(SharedPreferenceUtil.APP_TOKEN, "");
+
+        boolean isFirstLoad = SharedPreferenceUtil.getSharedPreference(this).getBoolean(SharedPreferenceUtil.IS_FIRST_LOAD, true);
+        if (isFirstLoad) {
+            SharedPreferenceUtil.getSharedEditor(this).putBoolean(SharedPreferenceUtil.IS_FIRST_LOAD, false).commit();
+            SharedPreferenceUtil.getSharedEditor(this).putInt(SharedPreferenceUtil.CREATE_TOAST_SHOW_TAG, 10).commit();
+        }
 //        if (!Util.isStringNotEmpty(token)) {
 //            delayIntent(3);
 //        } else {

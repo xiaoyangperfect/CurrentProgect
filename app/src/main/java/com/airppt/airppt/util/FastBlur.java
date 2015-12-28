@@ -260,18 +260,22 @@ public class FastBlur {
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static void blur(Context context, Bitmap bkg, View view) {
-        float radius = 8;
-        float scaleFactor = 8;
+        try {
+            float radius = 8;
+            float scaleFactor = 8;
 
-        Bitmap overlay = Bitmap.createBitmap((int)(bkg.getWidth()/scaleFactor), (int)(bkg.getHeight()/scaleFactor), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(overlay);
-        canvas.translate(-view.getLeft()/scaleFactor, -view.getTop()/scaleFactor);
-        canvas.scale(1 / scaleFactor, 1 / scaleFactor);
-        Paint paint = new Paint();
-        paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+            Bitmap overlay = Bitmap.createBitmap((int)(bkg.getWidth()/scaleFactor), (int)(bkg.getHeight()/scaleFactor), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(overlay);
+            canvas.translate(-view.getLeft()/scaleFactor, -view.getTop()/scaleFactor);
+            canvas.scale(1 / scaleFactor, 1 / scaleFactor);
+            Paint paint = new Paint();
+            paint.setFlags(Paint.FILTER_BITMAP_FLAG);
 //        paint.setARGB(8, 25, 20, 50);
-        canvas.drawBitmap(bkg, 0, 0, paint);
-        overlay = doBlur(overlay, (int) radius, true);
-        view.setBackground(new BitmapDrawable(context.getResources(), overlay));
+            canvas.drawBitmap(bkg, 0, 0, paint);
+            overlay = doBlur(overlay, (int) radius, true);
+            view.setBackground(new BitmapDrawable(context.getResources(), overlay));
+        } catch (Exception ex) {
+
+        }
     }
 }

@@ -28,6 +28,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.airppt.airppt.MainActivity;
 import com.airppt.airppt.activity.TempEditV4Activity;
 import com.gc.materialdesign.views.ProgressBarIndeterminate;
 import com.google.gson.Gson;
@@ -221,17 +222,16 @@ public class FragmentSearch extends Fragment {
                 tempEntry = new TempEntry();
                 try {
                     tempEntry = gson.fromJson(new String(bytes), type);
+                    mList.addAll(tempEntry.getData().getWorks());
+                    if (mList.size() > tempEntry.getData().getWorks().size()) {
+                        adapter.notifyItemRangeInserted(mList.size() - tempEntry.getData().getWorks().size() + 1, tempEntry.getData().getWorks().size());
+                    } else {
+                        adapter.notifyDataSetChanged();
+                    }
                 } catch (Exception ex) {
                     Log.e("error", ex.getMessage());
                 }
 
-                mList.addAll(tempEntry.getData().getWorks());
-//                adapter.setmList(mList);
-                if (mList.size() > tempEntry.getData().getWorks().size()) {
-                    adapter.notifyItemRangeInserted(mList.size() - tempEntry.getData().getWorks().size() + 1, tempEntry.getData().getWorks().size());
-                } else {
-                    adapter.notifyDataSetChanged();
-                }
                 if (circleBar.isShowing()) {
                     circleBar.dismiss();
                 }
@@ -256,6 +256,7 @@ public class FragmentSearch extends Fragment {
         adapter.setOnItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                ((MainActivity) getActivity()).showCreateToast();
                 showPopWindow(position);
                 worksEntry = mList.get(position);
                 clickItemIndex = position;
@@ -472,8 +473,14 @@ public class FragmentSearch extends Fragment {
         popView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mWebView.reload();
                 popupWindow.dismiss();
+            }
+        });
+
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                mWebView.reload();
             }
         });
 

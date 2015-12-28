@@ -36,6 +36,8 @@ public class SharedPreferenceUtil {
     public static String WORK_PATH = "workPath";
     public static String CHANGE_IMAGE_NAME = "changeImageName";
 
+    public static String CREATE_TOAST_SHOW_TAG = "createShowTag";
+
     public static SharedPreferences.Editor getSharedEditor(Context context) {
         return context.getSharedPreferences(APP, 0).edit();
     }
