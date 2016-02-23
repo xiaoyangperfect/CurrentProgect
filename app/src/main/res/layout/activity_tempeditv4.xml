@@ -162,10 +162,4 @@
         android:layout_alignParentBottom="true"
         android:visibility="gone" />
 
-    <!--<ImageView-->
-        <!--android:id="@+id/tempedit_mod3"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--android:visibility="visible" />-->
-
 </RelativeLayout>
