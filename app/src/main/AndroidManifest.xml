@@ -46,6 +46,7 @@
         <activity android:name="com.airppt.airppt.activity.UserGuideActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.airppt.airppt.activity.TempEditV4Activity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.airppt.airppt.wxapi.WXEntryActivity"
             android:label="@string/app_name"

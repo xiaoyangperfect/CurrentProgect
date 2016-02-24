@@ -414,18 +414,6 @@ public class TempEditV4Activity extends BaseActivity {
         dialog.addCancelButton(getString(R.string.cancel));
 
         dialogExist = new Dialog(this, getString(R.string.exist_work), getString(R.string.exist_prompt));
-
-//        modImg = (ImageView) findViewById(R.id.tempedit_mod3);
-//        String modVersion = SharedPreferenceUtil.getSharedPreference(this).getString(
-//                SharedPreferenceUtil.MOD3, "0"
-//        );
-//        if (!modVersion.equals("0")) {
-//            modImg.setVisibility(View.GONE);
-//        } else {
-//            modImg.setBackgroundResource(R.mipmap.mod_3);
-//            modImg.setTag("mod_3");
-//            modImg.setVisibility(View.VISIBLE);
-//        }
     }
 
     private void initCustemData() {
@@ -435,7 +423,6 @@ public class TempEditV4Activity extends BaseActivity {
         DPIUtil.getScreenMetrics(this);
         //初始化网络工具
         httpClient = new AsyncHttpClient();
-        httpClient.setTimeout(30000);
         gson = new Gson();
         //初始化输入法工具
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
