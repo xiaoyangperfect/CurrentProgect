@@ -23,19 +23,7 @@ public class WelcomeActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             Util.showStatusBar(WelcomeActivity.this);
-            switch (msg.what) {
-                case 1:
-                    intentToLogin();
-                    break;
-                case 2:
-                    intentToMain();
-                    break;
-                case 3:
-                    Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    WelcomeActivity.this.finish();
-                    break;
-            }
+            intentToMain();
         }
     };
 
@@ -50,35 +38,16 @@ public class WelcomeActivity extends BaseActivity {
         loadImg = (ImageView) findViewById(R.id.loading_page);
         loadImg.setBackgroundResource(R.mipmap.loading_page);
 
-        String token = SharedPreferenceUtil.getAccountSharedPreference(this).getString(SharedPreferenceUtil.APP_TOKEN, "");
-
+        //初始化Toast展示次数
         boolean isFirstLoad = SharedPreferenceUtil.getSharedPreference(this).getBoolean(SharedPreferenceUtil.IS_FIRST_LOAD, true);
         if (isFirstLoad) {
             SharedPreferenceUtil.getSharedEditor(this).putBoolean(SharedPreferenceUtil.IS_FIRST_LOAD, false).commit();
             SharedPreferenceUtil.getSharedEditor(this).putInt(SharedPreferenceUtil.CREATE_TOAST_SHOW_TAG, 10).commit();
         }
-//        if (!Util.isStringNotEmpty(token)) {
-//            delayIntent(3);
-//        } else {
-            delayIntent(2);
-//        }
 
+        handler.sendEmptyMessageDelayed(0, 2000);
     }
 
-    private void delayIntent(final int index) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                handler.sendEmptyMessage(index);
-            }
-        }, 2000);
-    }
-
-    private void intentToLogin() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
 
     private void intentToMain() {
         Intent intent = new Intent(this, MainActivity.class);

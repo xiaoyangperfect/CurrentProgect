@@ -78,7 +78,6 @@ import java.util.Vector;
  */
 public class FragmentMain extends Fragment {
     private View layView;
-//    private RecyclerView mRecyclerView;
     private CustomRecyclerView mRecyclerView;
     private SwipeRefreshLayout refreshLayout;
     private ProgressBarIndeterminate progressBar_bottom;
@@ -91,7 +90,6 @@ public class FragmentMain extends Fragment {
     private GridViewAdapter adapter;
     private String url;
     private String urlFeedBack;
-//    private RequestQueue mQueue;
     private AsyncHttpClient client;
     private Gson gson;
     //瀑布流中展示图片的宽度

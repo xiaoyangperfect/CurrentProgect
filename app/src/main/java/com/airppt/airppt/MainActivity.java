@@ -26,7 +26,6 @@ public class MainActivity extends BaseActivity {
 
     private FragmentTabHost mTabHost;
     private View indicator = null;
-//    private ImageView modImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,35 +46,6 @@ public class MainActivity extends BaseActivity {
         indicator = getIndicatorView(R.layout.tab_account);
         mTabHost.addTab(mTabHost.newTabSpec(THREETAB).setIndicator(indicator), FragmentAccount.class, null);
 
-//        modImg = (ImageView) findViewById(R.id.mainpage_mod1);
-//
-//        modImg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                modImg.setVisibility(View.GONE);
-//                switch ((String)modImg.getTag()) {
-//                    case "mod_1":
-//                        SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
-//                                SharedPreferenceUtil.MOD1, getString(R.string.app_version)
-//                        ).commit();
-//                        break;
-//                    case "mod_2":
-//                        SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
-//                                SharedPreferenceUtil.MOD2, getString(R.string.app_version)
-//                        ).commit();
-//                        break;
-//                    case "mod_7":
-//                        SharedPreferenceUtil.getSharedEditor(MainActivity.this).putString(
-//                                SharedPreferenceUtil.MOD7, getString(R.string.app_version)
-//                        ).commit();
-//                        break;
-//                }
-//
-//                Util.imageRecycle(modImg);
-//
-//            }
-//        });
-
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -93,25 +63,6 @@ public class MainActivity extends BaseActivity {
         View view = getLayoutInflater().inflate(layoutId, null);
         return view;
     }
-
-
-//    public void showMod1() {
-//        modImg.setBackgroundResource(R.mipmap.mod_1);
-//        modImg.setTag("mod_1");
-//        modImg.setVisibility(View.VISIBLE);
-//    }
-//
-//    public void showMod2() {
-//        modImg.setTag("mod_2");
-//        modImg.setBackgroundResource(R.mipmap.mod_2);
-//        modImg.setVisibility(View.VISIBLE);
-//    }
-//
-//    public void showMod7() {
-//        modImg.setTag("mod_7");
-//        modImg.setBackgroundResource(R.mipmap.mod_7);
-//        modImg.setVisibility(View.VISIBLE);
-//    }
 
     /**
      * 点击浏览作品时提示点击+创建作品
