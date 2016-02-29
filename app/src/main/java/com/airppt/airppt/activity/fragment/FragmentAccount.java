@@ -1,7 +1,9 @@
 package com.airppt.airppt.activity.fragment;
 
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
@@ -11,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,11 +28,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airppt.airppt.activity.TempEditV4Activity;
-import com.gc.materialdesign.views.ButtonFlat;
-import com.gc.materialdesign.widgets.Dialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.airppt.airppt.MainActivity;
 import com.airppt.airppt.R;
 import com.airppt.airppt.activity.SettingActivity;
 import com.airppt.airppt.activity.ShareActivity;
@@ -87,7 +87,7 @@ public class FragmentAccount extends Fragment {
     //    private MaterialDialog materialDialog, materialDialog2;
     private boolean isFirstLoad;
     private String deletId;
-    private Dialog dialog;
+    private Dialog dialog, dialog2;
 
     Handler handler = new Handler() {
         @Override
@@ -112,11 +112,8 @@ public class FragmentAccount extends Fragment {
                                     getWorkEntry(entry);
                                 } else {
                                     deletId = entry.getData().getWork_id();
-                                    dialog.show();
-                                    dialog.setMessage(getString(R.string.file_mis_sure_to_delete));
-                                    ButtonFlat flat = dialog.getButtonAccept();
-                                    flat.setText(getString(R.string.delete));
-                                    dialog.setButtonAccept(flat);
+                                    dialog2.show();
+
                                 }
                             }
                         }
@@ -142,12 +139,7 @@ public class FragmentAccount extends Fragment {
                     showReceiverWindow();
                     break;
                 case 5:
-
                     dialog.show();
-                    dialog.setMessage(getString(R.string.sure_to_delete));
-                    ButtonFlat flat = dialog.getButtonAccept();
-                    flat.setText(getString(R.string.delete));
-                    dialog.setButtonAccept(flat);
                     break;
             }
         }
@@ -317,17 +309,44 @@ public class FragmentAccount extends Fragment {
         }
 //        materialDialog = new MaterialDialog(getActivity());
 //        materialDialog2 = new MaterialDialog(getActivity());
-        dialog = new Dialog(getActivity(), getString(R.string.prompt), getString(R.string.sure_to_delete));
-        dialog.addCancelButton(getString(R.string.cancel));
+//        dialog = new Dialog(getActivity(), getString(R.string.prompt), getString(R.string.sure_to_delete));
+//        dialog.addCancelButton(getString(R.string.cancel));
+//
+//        dialog.setOnAcceptButtonClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                handler.sendEmptyMessage(2);
+//                dialog.dismiss();
+//                deletUndoWork(deletId);
+//            }
+//        });
 
-        dialog.setOnAcceptButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handler.sendEmptyMessage(2);
-                dialog.dismiss();
-                deletUndoWork(deletId);
-            }
-        });
+        dialog  = new AlertDialog.Builder(getActivity(), android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth)
+                .setTitle(R.string.prompt)
+                .setMessage(R.string.sure_to_delete)
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        handler.sendEmptyMessage(2);
+                        dialog.dismiss();
+                        deletUndoWork(deletId);
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .create();
+        dialog2  = new AlertDialog.Builder(getActivity(), android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth)
+                .setTitle(R.string.prompt)
+                .setMessage(R.string.file_mis_sure_to_delete)
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        handler.sendEmptyMessage(2);
+                        dialog.dismiss();
+                        deletUndoWork(deletId);
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .create();
     }
 
     private void showView() {

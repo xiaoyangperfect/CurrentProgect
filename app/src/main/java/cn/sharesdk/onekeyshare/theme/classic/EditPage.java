@@ -11,9 +11,9 @@ package cn.sharesdk.onekeyshare.theme.classic;
 import static com.mob.tools.utils.BitmapHelper.blur;
 import static com.mob.tools.utils.BitmapHelper.captureView;
 import static com.mob.tools.utils.R.dipToPx;
-import static com.mob.tools.utils.R.getBitmapRes;
 import static com.mob.tools.utils.R.getScreenWidth;
-import static com.mob.tools.utils.R.getStringRes;
+import static cn.sharesdk.framework.utils.ShareSDKR.getStringRes;
+import static cn.sharesdk.framework.utils.ShareSDKR.getBitmapRes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,12 +55,11 @@ import cn.sharesdk.framework.CustomPlatform;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.framework.TitleLayout;
-
-import com.airppt.airppt.R;
-import com.mob.tools.utils.UIHandler;
 import cn.sharesdk.onekeyshare.EditPageFakeActivity;
 import cn.sharesdk.onekeyshare.PicViewer;
 import cn.sharesdk.onekeyshare.ShareCore;
+
+import com.mob.tools.utils.UIHandler;
 
 /**
  * Photo-text Sharing will be handling in this page
@@ -70,7 +69,7 @@ import cn.sharesdk.onekeyshare.ShareCore;
  */
 public class EditPage extends EditPageFakeActivity implements OnClickListener, TextWatcher {
 	private static final int MAX_TEXT_COUNT = 140;
-	private static final int DIM_COLOR = R.color.button_color;
+	private static final int DIM_COLOR = 0x7f323232;
 	private RelativeLayout rlPage;
 	private TitleLayout llTitle;
 	private LinearLayout llBody;
@@ -113,7 +112,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			return;
 		}
 
-		genBackground();
+		getBackground();
 		activity.setContentView(getPageView());
 		onTextChanged(etContent.getText(), 0, etContent.length(), 0);
 		showThumb();
@@ -159,7 +158,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		rlPage.setBackgroundDrawable(background);
 		if (dialogMode) {
 			RelativeLayout rlDialog = new RelativeLayout(getContext());
-//			rlDialog.setBackgroundColor(0xc0323232);
+			rlDialog.setBackgroundColor(0xc0323232);
 			int dp_8 = dipToPx(getContext(), 8);
 			int width = getScreenWidth(getContext()) - dp_8 * 2;
 			RelativeLayout.LayoutParams lpDialog = new RelativeLayout.LayoutParams(
@@ -184,18 +183,19 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// title bar
 	private TitleLayout getPageTitle() {
 		llTitle = new TitleLayout(getContext());
-//		llTitle.setId(1);
-//		int resId = getBitmapRes(activity, "title_back");
-//		if (resId > 0) {
-//			llTitle.setBackgroundResource(resId);
-//		}
+		llTitle.setId(22222);
+		int resId = getBitmapRes(activity, "title_back");
+		if (resId > 0) {
+			llTitle.setBackgroundResource(resId);
+		}
 		llTitle.getBtnBack().setOnClickListener(this);
-		int resId = getStringRes(activity, "multi_share");
+
+		resId = getStringRes(activity, "ssdk_oks_multi_share");
 		if (resId > 0) {
 			llTitle.getTvTitle().setText(resId);
 		}
 		llTitle.getBtnRight().setVisibility(View.VISIBLE);
-		resId = getStringRes(activity, "share");
+		resId = getStringRes(activity, "ssdk_oks_share");
 		if (resId > 0) {
 			llTitle.getBtnRight().setText(resId);
 		}
@@ -213,8 +213,8 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// page body
 	private LinearLayout getPageBody() {
 		llBody = new LinearLayout(getContext());
-//		llBody.setId(2);
-		int resId = getBitmapRes(activity, "edittext_back");
+		llBody.setId(2);
+		int resId = getBitmapRes(activity, "ssdk_oks_edittext_back");
 		if (resId > 0) {
 			llBody.setBackgroundResource(resId);
 		}
@@ -275,7 +275,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// shared image container
 	private RelativeLayout getThumbView() {
 		rlThumb = new RelativeLayout(getContext());
-//		rlThumb.setId(1);
+		rlThumb.setId(1);
 		int dp_82 = dipToPx(getContext(), 82);
 		int dp_98 = dipToPx(getContext(), 98);
 		LayoutParams lpThumb
@@ -283,7 +283,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		rlThumb.setLayoutParams(lpThumb);
 
 		ivImage = new ImageView(getContext());
-		int resId = getBitmapRes(activity, "btn_back_nor");
+		int resId = getBitmapRes(activity, "ssdk_oks_btn_back_nor");
 		if (resId > 0) {
 			ivImage.setBackgroundResource(resId);
 		}
@@ -328,7 +328,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 				removeImage(imgInfo);
 			}
 		});
-		resId = getBitmapRes(activity, "img_cancel");
+		resId = getBitmapRes(activity, "ssdk_oks_img_cancel");
 		if (resId > 0) {
 			btn.setBackgroundResource(resId);
 		}
@@ -352,7 +352,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			public void onFinish(ArrayList<ImageInfo> results) {
 				if(results == null || results.size() == 0)
 					return;
-				//TODO: 支持多图
+				//支持多图
 				imgInfo = results.get(0);
 				image = imgInfo.bitmap;
 				rlThumb.setVisibility(View.VISIBLE);
@@ -409,7 +409,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 					subPage.setPlatform(platforms.get(0));
 					subPage.showForResult(activity, null, EditPage.this);
 				} else {
-					int resId = getStringRes(activity, "select_one_plat_at_least");
+					int resId = getStringRes(activity, "ssdk_oks_select_one_plat_at_least");
 					if (resId > 0) {
 						Toast.makeText(getContext(), resId, Toast.LENGTH_SHORT).show();
 					}
@@ -418,7 +418,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		});
 
 		TextView tvAt = new TextView(getContext());
-		int resId = getBitmapRes(activity, "btn_back_nor");
+		int resId = getBitmapRes(activity, "ssdk_oks_btn_back_nor");
 		if (resId > 0) {
 			tvAt.setBackgroundResource(resId);
 		}
@@ -436,7 +436,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		TextView tvName = new TextView(getContext());
 		tvName.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
 		tvName.setTextColor(0xff000000);
-		resId = getStringRes(activity, "list_friends");
+		resId = getStringRes(activity, "ssdk_oks_list_friends");
 		String text = getContext().getString(resId, getName(platform));
 		tvName.setText(text);
 		LayoutParams lpName = new LayoutParams(
@@ -466,7 +466,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		llToolBar.setLayoutParams(lpTb);
 
 		TextView tvShareTo = new TextView(getContext());
-		int resId = getStringRes(activity, "share_to");
+		int resId = getStringRes(activity, "ssdk_oks_share_to");
 		if (resId > 0) {
 			tvShareTo.setText(resId);
 		}
@@ -500,7 +500,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// the pin
 	private ImageView getImagePin() {
 		ivPin = new ImageView(getContext());
-		int resId = getBitmapRes(activity, "pin");
+		int resId = getBitmapRes(activity, "ssdk_oks_pin");
 		if (resId > 0) {
 			ivPin.setImageResource(resId);
 		}
@@ -517,8 +517,8 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		return ivPin;
 	}
 
-	private void genBackground() {
-		background = new ColorDrawable(activity.getResources().getColor(DIM_COLOR));
+	private void getBackground() {
+		background = new ColorDrawable(DIM_COLOR);
 		if (backgroundView != null) {
 			try {
 				Bitmap bgBm = captureView(backgroundView, backgroundView.getWidth(), backgroundView.getHeight());
@@ -536,7 +536,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			return "";
 		}
 
-		int resId = getStringRes(getContext(), platform.toLowerCase());
+		int resId = getStringRes(getContext(), "ssdk_" + platform.toLowerCase());
 		return getContext().getString(resId);
 	}
 
@@ -572,7 +572,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			if (platforms.size() > 0) {
 				setResultAndFinish();
 			} else {
-				int resId = getStringRes(activity, "select_one_plat_at_least");
+				int resId = getStringRes(activity, "ssdk_oks_select_one_plat_at_least");
 				if (resId > 0) {
 					Toast.makeText(getContext(), resId, Toast.LENGTH_SHORT).show();
 				}
@@ -655,7 +655,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			return null;
 		}
 
-		String resName = "logo_" + plat.getName();
+		String resName = "ssdk_oks_logo_" + plat.getName();
 		int resId = getBitmapRes(activity, resName.toLowerCase());
 		if(resId > 0) {
 			return BitmapFactory.decodeResource(activity.getResources(), resId);
@@ -707,10 +707,10 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			Window win = activity.getWindow();
 			win.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
 					| WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-			rlPage.setBackgroundColor(activity.getResources().getColor(DIM_COLOR));
+			rlPage.setBackgroundColor(DIM_COLOR);
 			rlPage.postDelayed(new Runnable() {
 				public void run() {
-					genBackground();
+					getBackground();
 					rlPage.setBackgroundDrawable(background);
 				}
 			}, 1000);
@@ -719,10 +719,10 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			Window win = activity.getWindow();
 			win.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
 					| WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-			rlPage.setBackgroundColor(activity.getResources().getColor(DIM_COLOR));
+			rlPage.setBackgroundColor(DIM_COLOR);
 			rlPage.postDelayed(new Runnable() {
 				public void run() {
-					genBackground();
+					getBackground();
 					rlPage.setBackgroundDrawable(background);
 				}
 			}, 1000);

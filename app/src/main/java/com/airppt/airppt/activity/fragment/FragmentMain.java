@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -27,7 +28,6 @@ import android.widget.TextView;
 
 import com.airppt.airppt.activity.TempEditV4Activity;
 import com.flurry.android.FlurryAgent;
-import com.gc.materialdesign.views.ProgressBarIndeterminate;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.airppt.airppt.MainActivity;
@@ -80,7 +80,7 @@ public class FragmentMain extends Fragment {
     private View layView;
     private CustomRecyclerView mRecyclerView;
     private SwipeRefreshLayout refreshLayout;
-    private ProgressBarIndeterminate progressBar_bottom;
+    private ContentLoadingProgressBar progressBar_bottom;
     private CircleDialogProgressBar circleBar;
     private ViewPager viewPager;
     private View headView;
@@ -157,7 +157,7 @@ public class FragmentMain extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
 
         refreshLayout = (SwipeRefreshLayout) layView.findViewById(R.id.swipe_container);
-        progressBar_bottom = (ProgressBarIndeterminate) layView.findViewById(R.id.main_progressBar_bottom);
+        progressBar_bottom = (ContentLoadingProgressBar) layView.findViewById(R.id.main_progressBar_bottom);
         headView = inflater.inflate(R.layout.recycler_headview, null);
         viewPager = (ViewPager) headView.findViewById(R.id.activity_main_custemviewpager);
         pointLayout = (LinearLayout) headView.findViewById(R.id.mainpager_pointcontainer);

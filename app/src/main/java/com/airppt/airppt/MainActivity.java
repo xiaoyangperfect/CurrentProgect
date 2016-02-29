@@ -1,15 +1,16 @@
 package com.airppt.airppt;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.Toast;
 
-import com.gc.materialdesign.widgets.SnackBar;
 import com.airppt.airppt.activity.BaseActivity;
 import com.airppt.airppt.activity.fragment.FragmentAccount;
 import com.airppt.airppt.activity.fragment.FragmentMain;
@@ -26,11 +27,13 @@ public class MainActivity extends BaseActivity {
 
     private FragmentTabHost mTabHost;
     private View indicator = null;
+    private View layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        layout = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+        setContentView(layout);
 
         ((MyApplication) getApplication()).popAllActivityExceptOne(MainActivity.class);
 
@@ -76,6 +79,14 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        if (!Util.isStringNotEmpty(SharedPreferenceUtil.getAccountSharedPreference(MainActivity.this).getString(SharedPreferenceUtil.USERID, ""))) {
+            mTabHost.setCurrentTab(0);
+        }
+        super.onResume();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         mTabHost = null;
@@ -85,13 +96,16 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getRepeatCount() == 0) {
-            new SnackBar(this, getString(R.string.sure_to_exist), getString(R.string.exist), new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((MyApplication) getApplication()).finished();
-                }
-            }).show();
+            Snackbar.make(layout, getString(R.string.sure_to_exist), Snackbar.LENGTH_LONG)
+                    .setAction(getString(R.string.exist),
+                            new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ((MyApplication) getApplication()).finished();
+                                }
+                            })
+                    .show();
         }
-        return super.onKeyDown(keyCode, event);
+        return false;
     }
 }

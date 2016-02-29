@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 23
     buildToolsVersion '23.0.2'
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.airppt.airppt"
         minSdkVersion 15
@@ -50,36 +51,28 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile files('libs/universal-image-loader-1.8.7-snapshot-with-sources.jar')
-    compile files('libs/gson-2.2.4.jar')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/httpcore-4.3.2.jar')
     compile files('libs/httpmime-4.3.5.jar')
-    compile files('libs/libammsdk.jar')
     compile files('libs/Volley.jar')
-    compile files('libs/nineoldandroids-2.4.0.jar')
-    compile files('libs/android-async-http-1.4.5.jar')
-    compile files('libs/MobLogCollector.jar')
+    compile files('libs/libammsdk.jar')
+    //    compile files('libs/MobLogCollector.jar')
     compile files('libs/MobTools.jar')
-    compile files('libs/ShareSDK-Facebook-2.6.1.jar')
-    compile files('libs/ShareSDK-Twitter-2.6.1.jar')
-    compile files('libs/ShareSDK-TencentWeibo-2.6.1.jar')
-    compile files('libs/ShareSDK-ShortMessage-2.6.1.jar')
-    compile files('libs/ShareSDK-QQ-2.6.1.jar')
-    compile files('libs/ShareSDK-SinaWeibo-2.6.1.jar')
-    compile files('libs/ShareSDK-QZone-2.6.1.jar')
-    compile files('libs/ShareSDK-Email-2.6.1.jar')
-    compile files('libs/ShareSDK-Core-2.6.1.jar')
     compile files('libs/universal-image-loader-1.9.4.jar')
-    compile 'com.umeng:fb:5.4.0'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
-    //    compile 'me.drakeet.materialdialog:library:1.2.2'
-    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
-    //    compile 'com.android.support:support-v4:21.+'
+    compile 'com.umeng:fb:5.4.0'
     compile files('libs/FlurryAnalytics-6.0.0.jar')
     compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.android.support:cardview-v7:21.0.3'
-    compile 'com.android.support:recyclerview-v7:21.0.3'
-
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:cardview-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile files('libs/ShareSDK-Core-2.6.6.jar')
+    compile files('libs/ShareSDK-QQ-2.6.6.jar')
+    compile files('libs/ShareSDK-QZone-2.6.6.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.6.6.jar')
+    compile files('libs/ShareSDK-Wechat-2.6.6.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.6.6.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.6.6.jar')
 }

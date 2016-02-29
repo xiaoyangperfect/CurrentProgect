@@ -92,9 +92,9 @@ public class AllPhotoShowActivity extends BaseActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AllPhotoShowActivity.this, ChoiceModelActivity.class);
-                intent.putStringArrayListExtra("paths", paths);
-                startActivity(intent);
+//                Intent intent = new Intent(AllPhotoShowActivity.this, ChoiceModelActivity.class);
+//                intent.putStringArrayListExtra("paths", paths);
+//                startActivity(intent);
             }
         });
     }

@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -30,7 +31,6 @@ import android.widget.TextView;
 
 import com.airppt.airppt.MainActivity;
 import com.airppt.airppt.activity.TempEditV4Activity;
-import com.gc.materialdesign.views.ProgressBarIndeterminate;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.airppt.airppt.R;
@@ -70,7 +70,7 @@ public class FragmentSearch extends Fragment {
     private View mainView;
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView mRecyclerView;
-    private ProgressBarIndeterminate progressBar_bottom;
+    private ContentLoadingProgressBar progressBar_bottom;
     private CircleDialogProgressBar circleBar;
     private EditText editText;
     private Button deletBtn;
@@ -131,7 +131,7 @@ public class FragmentSearch extends Fragment {
         mRecyclerView = (RecyclerView) mainView.findViewById(R.id.search_recycler);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
-        progressBar_bottom = (ProgressBarIndeterminate) mainView.findViewById(R.id.search_progressBar);
+        progressBar_bottom = (ContentLoadingProgressBar) mainView.findViewById(R.id.search_progressBar);
         editText = (EditText) mainView.findViewById(R.id.search_edit);
         deletBtn = (Button) mainView.findViewById(R.id.search_delet);
         image = mainView.findViewById(R.id.search_img);

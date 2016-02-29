@@ -54,13 +54,13 @@
                 android:id="@+id/search_recycler"/>
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <com.gc.materialdesign.views.ProgressBarIndeterminate
+        <android.support.v4.widget.ContentLoadingProgressBar
             android:id="@+id/search_progressBar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_alignParentBottom="true"
-            android:background="@android:color/holo_purple" />
+            style="?android:attr/progressBarStyleSmall"/>
     </RelativeLayout>
 
 </LinearLayout>

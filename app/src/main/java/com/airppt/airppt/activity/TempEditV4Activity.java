@@ -1,9 +1,11 @@
 package com.airppt.airppt.activity;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -18,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -82,8 +85,6 @@ import com.airppt.airppt.util.SharedPreferenceUtil;
 import com.airppt.airppt.util.Util;
 import com.airppt.airppt.util.ZipUtil;
 import com.airppt.airppt.view.CircleDialogProgressBar;
-import com.gc.materialdesign.views.ButtonFlat;
-import com.gc.materialdesign.widgets.Dialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpClient;
@@ -284,9 +285,6 @@ public class TempEditV4Activity extends BaseActivity {
                     break;
                 case 7:
                     dialog.show();
-                    ButtonFlat flat = dialog.getButtonAccept();
-                    flat.setText(getString(R.string.delete));
-                    dialog.setButtonAccept(flat);
                     break;
                 case 8:
                     workPreview();
@@ -410,10 +408,47 @@ public class TempEditV4Activity extends BaseActivity {
         circleBar.show();
 
         //页面删除提示框初始化
-        dialog = new Dialog(this, getString(R.string.prompt), getString(R.string.sure_to_delete_page));
-        dialog.addCancelButton(getString(R.string.cancel));
+        dialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth)
+                .setTitle(R.string.prompt)
+                .setMessage(R.string.sure_to_delete_page)
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        circleBar.show();
+                        removePage(webViewIndex);
+                    }
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .create();
+                //this, getString(R.string.prompt), getString(R.string.sure_to_delete_page));
 
-        dialogExist = new Dialog(this, getString(R.string.exist_work), getString(R.string.exist_prompt));
+       // dialogExist = new Dialog(this, getString(R.string.exist_work), getString(R.string.exist_prompt));
+        dialogExist = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar_MinWidth)
+                .setTitle(R.string.exist_work)
+                .setMessage(R.string.exist_prompt)
+                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (datajsWork == null || !isChangeCover) {
+                            handler.sendEmptyMessage(10);
+                            return;
+                        }
+                        intentMod = TO_SAVE;
+                        handler.sendEmptyMessage(12);
+                    }
+                })
+                .setNegativeButton(R.string.give_up, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (createMod == MODIFY) {
+                            FileUtil.deleteDirectory(new File(workPath));
+                            TempEditV4Activity.this.finish();
+                        } else {
+                            deletUndoWork(miKey + "");
+                        }
+                    }
+                })
+                .create();
     }
 
     private void initCustemData() {
@@ -517,38 +552,38 @@ public class TempEditV4Activity extends BaseActivity {
     }
 
     private void setListener() {
-        dialog.setOnAcceptButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                circleBar.show();
-                removePage(webViewIndex);
-            }
-        });
-
-        dialogExist.addCancelButton(getString(R.string.give_up), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (createMod == MODIFY) {
-                    FileUtil.deleteDirectory(new File(workPath));
-                    TempEditV4Activity.this.finish();
-                } else {
-                    deletUndoWork(miKey + "");
-                }
-            }
-        });
-
-        dialogExist.setOnAcceptButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogExist.dismiss();
-                if (datajsWork == null || !isChangeCover) {
-                    handler.sendEmptyMessage(10);
-                    return;
-                }
-                intentMod = TO_SAVE;
-                handler.sendEmptyMessage(12);
-            }
-        });
+//        dialog.setOnAcceptButtonClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                circleBar.show();
+//                removePage(webViewIndex);
+//            }
+//        });
+//
+//        dialogExist.addCancelButton(getString(R.string.give_up), new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (createMod == MODIFY) {
+//                    FileUtil.deleteDirectory(new File(workPath));
+//                    TempEditV4Activity.this.finish();
+//                } else {
+//                    deletUndoWork(miKey + "");
+//                }
+//            }
+//        });
+//
+//        dialogExist.setOnAcceptButtonClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialogExist.dismiss();
+//                if (datajsWork == null || !isChangeCover) {
+//                    handler.sendEmptyMessage(10);
+//                    return;
+//                }
+//                intentMod = TO_SAVE;
+//                handler.sendEmptyMessage(12);
+//            }
+//        });
 
         inputEdittext.addTextChangedListener(new TextWatcher() {
             @Override
@@ -1713,9 +1748,6 @@ public class TempEditV4Activity extends BaseActivity {
             TempEditV4Activity.this.finish();
         } else {
             dialogExist.show();
-            ButtonFlat flat = dialogExist.getButtonAccept();
-            flat.setText(getString(R.string.save));
-            dialogExist.setButtonAccept(flat);
         }
 
     }

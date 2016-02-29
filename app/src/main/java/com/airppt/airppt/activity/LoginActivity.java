@@ -119,13 +119,16 @@ public class LoginActivity extends BaseActivity {
         api = WXAPIFactory.createWXAPI(this, WXConfig.APP_ID, false);
 
         if(!api.isWXAppInstalled()) {
+            circleBar.hide();
             Toast.makeText(this, getString(R.string.cannot_find_wechat), Toast.LENGTH_LONG).show();
+        } else {
+            api.registerApp(WXConfig.APP_ID);
+            SendAuth.Req req = new SendAuth.Req();
+            req.scope = "snsapi_userinfo";
+            req.state = System.currentTimeMillis() + "";
+            api.sendReq(req);
         }
-        api.registerApp(WXConfig.APP_ID);
-        SendAuth.Req req = new SendAuth.Req();
-        req.scope = "snsapi_userinfo";
-        req.state = System.currentTimeMillis() + "";
-        api.sendReq(req);
+
     }
 
     public void skip(View view) {

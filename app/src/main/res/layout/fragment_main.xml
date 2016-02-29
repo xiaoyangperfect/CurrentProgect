@@ -32,13 +32,13 @@
         </android.support.v4.widget.SwipeRefreshLayout>
     </FrameLayout>
 
-    <com.gc.materialdesign.views.ProgressBarIndeterminate
+    <android.support.v4.widget.ContentLoadingProgressBar
         android:id="@+id/main_progressBar_bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/holo_purple" />
+        style="?android:attr/progressBarStyleSmall" />
 
 
 </RelativeLayout>
