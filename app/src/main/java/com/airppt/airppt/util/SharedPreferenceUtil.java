@@ -25,11 +25,6 @@ public class SharedPreferenceUtil {
 
     public static String MOD1 = "mod1";
     public static String MOD2 = "mod2";
-    public static String MOD3 = "mod3";
-    public static String MOD4 = "mod4";
-    public static String MOD5 = "mod5";
-    public static String MOD6 = "mod6";
-    public static String MOD7 = "mod7";
 
     //当前替换image的名字
     public static String OPT_IMAGE_NAME = "optImgName";

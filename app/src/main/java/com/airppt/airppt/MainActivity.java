@@ -1,7 +1,11 @@
 package com.airppt.airppt;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -35,8 +39,8 @@ public class MainActivity extends BaseActivity {
         layout = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
         setContentView(layout);
 
-        ((MyApplication) getApplication()).popAllActivityExceptOne(MainActivity.class);
-
+//        ((MyApplication) getApplication()).popAllActivityExceptOne(MainActivity.class);
+        
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 
@@ -60,6 +64,7 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+        getPermission();
     }
 
     private View getIndicatorView(int layoutId) {
@@ -107,5 +112,25 @@ public class MainActivity extends BaseActivity {
                     .show();
         }
         return false;
+    }
+
+    private void getPermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int REQUEST_EXTERNAL_STORAGE = 1;
+            String[] PERMISSIONS_STORAGE = {
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            };
+            int permission = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                // We don't have permission so prompt the user
+                ActivityCompat.requestPermissions(
+                        MainActivity.this,
+                        PERMISSIONS_STORAGE,
+                        REQUEST_EXTERNAL_STORAGE
+                );
+            }
+        }
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AirPPT-请柬 相册 H5</string>
-    <string name="app_version_name">1.1.2</string>
-    <string name="app_version">12</string>
+    <string name="app_version_name">1.1.4</string>
+    <string name="app_version">14</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -98,4 +98,5 @@
     <string name="cannot_find_wechat">not found Wechat!</string>
 
     <string name="click_to_create">点击“+”来创建你的作品吧！</string>
+    <string name="oom">内存不够用喽，稍微休息会吧！</string>
 </resources>

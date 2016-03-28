@@ -158,7 +158,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		rlPage.setBackgroundDrawable(background);
 		if (dialogMode) {
 			RelativeLayout rlDialog = new RelativeLayout(getContext());
-			rlDialog.setBackgroundColor(0xc0323232);
+//			rlDialog.setBackgroundColor(0xc0323232);
 			int dp_8 = dipToPx(getContext(), 8);
 			int width = getScreenWidth(getContext()) - dp_8 * 2;
 			RelativeLayout.LayoutParams lpDialog = new RelativeLayout.LayoutParams(
@@ -183,7 +183,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// title bar
 	private TitleLayout getPageTitle() {
 		llTitle = new TitleLayout(getContext());
-		llTitle.setId(22222);
+//		llTitle.setId(22222);
 		int resId = getBitmapRes(activity, "title_back");
 		if (resId > 0) {
 			llTitle.setBackgroundResource(resId);
@@ -213,7 +213,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// page body
 	private LinearLayout getPageBody() {
 		llBody = new LinearLayout(getContext());
-		llBody.setId(2);
+//		llBody.setId(2);
 		int resId = getBitmapRes(activity, "ssdk_oks_edittext_back");
 		if (resId > 0) {
 			llBody.setBackgroundResource(resId);
@@ -275,7 +275,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 	// shared image container
 	private RelativeLayout getThumbView() {
 		rlThumb = new RelativeLayout(getContext());
-		rlThumb.setId(1);
+//		rlThumb.setId(1);
 		int dp_82 = dipToPx(getContext(), 82);
 		int dp_98 = dipToPx(getContext(), 98);
 		LayoutParams lpThumb
@@ -376,7 +376,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 		// Words counter
 		tvCounter = new TextView(getContext());
 		tvCounter.setText(String.valueOf(MAX_TEXT_COUNT));
-		tvCounter.setTextColor(0xffcfcfcf);
+//		tvCounter.setTextColor(0xffcfcfcf);
 		tvCounter.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
 		tvCounter.setTypeface(Typeface.DEFAULT_BOLD);
 		LayoutParams lpCounter = new LayoutParams(
@@ -622,7 +622,7 @@ public class EditPage extends EditPageFakeActivity implements OnClickListener, T
 			fl.addView(iv);
 
 			views[i] = new View(getContext());
-			views[i].setBackgroundColor(0xcfffffff);
+//			views[i].setBackgroundColor(0xcfffffff);
 			views[i].setOnClickListener(this);
 			String platformName = platformList[i].getName();
 			for(Platform plat : platforms) {

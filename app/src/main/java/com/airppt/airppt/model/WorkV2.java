@@ -1,5 +1,7 @@
 package com.airppt.airppt.model;
 
+import android.widget.Toast;
+
 import com.airppt.airppt.util.MD5Util;
 import com.airppt.airppt.util.Util;
 import com.google.gson.Gson;
@@ -79,18 +81,24 @@ public class WorkV2 {
         }
 
         String htmlJson = TempEditUtil.getJsonFromFile(workPath + "/" + htmlFileName);
-        htmlJson = htmlJson.replaceAll(h5Name, dataJsFileName);
-        FileUtil.writeData(htmlPath, htmlJson);
-        jsPage = TempEditUtil.getPageInfo(dataJsPath);
-        ArrayList<HashMap> hpages = initPageNum(jsPage.pageInfo, baseUrl, true);
-        initPage(false, hpages);
-        if (pages != null && pages.size() > 0) {
-            jsPage.pageInfo = gson.toJson(getPagesInfo());
-            String dataJs = jsPage.pre + jsPage.pageInfo + jsPage.next;
-            FileUtil.writeData(dataJsPath, dataJs);
+        if (h5Name != null && dataJsFileName != null && htmlJson != null) {
+            htmlJson = htmlJson.replaceAll(h5Name, dataJsFileName);
+            FileUtil.writeData(htmlPath, htmlJson);
+            jsPage = TempEditUtil.getPageInfo(dataJsPath);
+            ArrayList<HashMap> hpages = initPageNum(jsPage.pageInfo, baseUrl, true);
+            initPage(false, hpages);
+            if (pages != null && pages.size() > 0) {
+                jsPage.pageInfo = gson.toJson(getPagesInfo());
+                String dataJs = jsPage.pre + jsPage.pageInfo + jsPage.next;
+                FileUtil.writeData(dataJsPath, dataJs);
+            } else {
+                isInitSuccess = false;
+            }
         } else {
             isInitSuccess = false;
         }
+
+
     }
 
     private ArrayList<HashMap> initPageNum(String json, String base, boolean isLimit) {

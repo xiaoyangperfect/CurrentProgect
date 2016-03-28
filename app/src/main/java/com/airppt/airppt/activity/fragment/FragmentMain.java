@@ -3,6 +3,7 @@ package com.airppt.airppt.activity.fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -102,7 +103,6 @@ public class FragmentMain extends Fragment {
     private boolean loading = true;
     private int firstVisibleItem, visibleItemCount, totalItemCount;
     //模板分类
-    private String templateTag;
     private TempEntry tempEntry;
     private WorksEntry worksEntry;
     private HotWorkData hotWork;
@@ -168,7 +168,6 @@ public class FragmentMain extends Fragment {
 
     private void initData() {
         userId = SharedPreferenceUtil.getAccountSharedPreference(getActivity()).getString(SharedPreferenceUtil.USERID, "");
-        templateTag = "";
         LID = 1;
         gson = new Gson();
         client = new AsyncHttpClient();
@@ -465,13 +464,6 @@ public class FragmentMain extends Fragment {
         adapter.setOnItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                if (SharedPreferenceUtil.getSharedPreference(getActivity()).getString(
-//                        SharedPreferenceUtil.MOD1, "0"
-//                ).equals("0")) {
-//                    ((MainActivity)getActivity()).showMod1();
-//                } else {
-//
-//                }
                 ((MainActivity) getActivity()).showCreateToast();
                 showPopWindow(position-1);
                 worksEntry = mList.get(position-1);
@@ -529,43 +521,6 @@ public class FragmentMain extends Fragment {
 
 //    /********** 实现列表随机选中的item中的图片每隔一定时间更换一次 ***********/
     ImageView imageView;
-//    private void changeItemBgImage() {
-//        int index = firstVisibleItem + new Random().nextInt(5);
-//        View view = layoutManager.getChildAt(index);
-//        imageView = (ImageView) view.findViewById(R.id.item_base_view_img);
-//        String url = HttpConfig.BASE_URL_STORE + mList.get(index).getThumbnailImages().get(1).getPath();
-//        ImageRequest imageRequest = new ImageRequest(url,
-//                new Response.Listener<Bitmap>() {
-//                    @Override
-//                    public void onResponse(Bitmap response) {
-//                        imageView.setImageBitmap(response);
-//                    }
-//                }, 0, 0, Bitmap.Config.RGB_565, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                imageView.setImageResource(R.mipmap.ic_error);
-//            }
-//        });
-////        mQueue.add(imageRequest);
-////        mQueue.start();
-//    }
-//
-//    Timer timer = new Timer();
-//
-//    TimerTask changeImageTask = new TimerTask() {
-//        @Override
-//        public void run() {
-//            handler.sendEmptyMessage(0);
-//        }
-//    };
-//
-//    Handler handler = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            changeItemBgImage();
-//        }
-//    };
-
 
     /******弹出框*******/
     private WebView mWebView;
@@ -631,16 +586,18 @@ public class FragmentMain extends Fragment {
      * @param position 点击列表位置
      */
     private void showPopWindow(int position) {
-        try {
-            Bitmap screenBitmap = ScreenShortCutUtil.getShortScreen(getActivity());
-            if (screenBitmap != null) {
-                FastBlur.blur(getActivity(), screenBitmap, popView);
-                screenBitmap.recycle();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
+            try {
+                Bitmap screenBitmap = ScreenShortCutUtil.getShortScreen(getActivity());
+                if (screenBitmap != null) {
+                    FastBlur.blur(getActivity(), screenBitmap, popView);
+                    screenBitmap.recycle();
+                }
+            } catch (OutOfMemoryError ex) {
+
             }
-
-        } catch (Exception ex) {
-
         }
+
 
         int baseHight = 0;
         baseHight = Math.round(baseWidth / screenWByH);
@@ -673,7 +630,9 @@ public class FragmentMain extends Fragment {
         popEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userId = SharedPreferenceUtil.getAccountSharedPreference(getActivity()).getString(SharedPreferenceUtil.USERID, "");
                 if (!Util.isStringNotEmpty(userId)) {
+                    popupWindow.dismiss();
                     Util.toLogin(getActivity());
                 } else {
                     Intent intent = new Intent(getActivity(), TempEditV4Activity.class);
@@ -699,6 +658,7 @@ public class FragmentMain extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!Util.isStringNotEmpty(userId)) {
+                    popupWindow.dismiss();
                     Util.toLogin(getActivity());
                 } else {
                     userFeedBack(worksEntry.getWorksId());
@@ -710,7 +670,7 @@ public class FragmentMain extends Fragment {
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                mWebView.reload();
+                mWebView.loadUrl(HttpConfig.BASE_URL);
             }
         });
 

@@ -118,7 +118,7 @@ public class TempEditV4Activity extends BaseActivity {
     private Button sortBtn, music_btn;
     private LinearLayout container;
     private RecyclerView sortRecyclerView;
-//    private ImageView modImg;
+    private ImageView modImg;
 
     private AsyncHttpClient httpClient;
     private Gson gson;
@@ -211,14 +211,16 @@ public class TempEditV4Activity extends BaseActivity {
                     TempEditV4Activity.this.finish();
                     break;
                 case 1:
-                    initWorkPath();
+                    tempPath = FileUtil.TEMP_PATH + "/" + tempEntry.getWorksId();
+                    workPath = FileUtil.WORKS_PATH + "/" + miKey;
+                    SharedPreferenceUtil.getSharedEditor(TempEditV4Activity.this).putString(SharedPreferenceUtil.WORK_PATH, workPath).commit();
                     downloadFilesByCreate();
                     break;
                 case 2:
                     fileNum--;
                     Log.e("file nume", fileNum + "");
                     if (fileNum == 0) {
-                        if ((createMod == CREATE) && Util.isStringNotEmpty(orgH5dataFileName)) {
+                        if ((createMod == CREATE) && Util.isStringNotEmpty(orgH5dataFileName) && checkNecessaryFile(tempPath, tempEntry, true)) {
                             initWork(0);
                         } else if (!(createMod == CREATE) && (checkNecessaryFile(tempPath, tempEntry, true) &&
                                 checkNecessaryFile(workPath, workEntry, false))){
@@ -260,7 +262,7 @@ public class TempEditV4Activity extends BaseActivity {
                         layoutParams.setMargins(10, 0, 10, 0);
                         imageView.setLayoutParams(layoutParams);
                         imageView.setEnabled(false);
-                        imageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.point_background));
+                        imageView.setBackgroundResource(R.drawable.point_background);
                         container.addView(imageView);
                         container.getChildAt(container.getChildCount()-2).setEnabled(false);
                         container.getChildAt(container.getChildCount()-1).setEnabled(true);
@@ -274,6 +276,8 @@ public class TempEditV4Activity extends BaseActivity {
                 case 6:
                     if (pageIndex >= shortCutViews.size())
                         pageIndex = shortCutViews.size() - 1;
+                    if (pageIndex >= sortAdapter.getItemCount())
+                        pageIndex = sortAdapter.getItemCount()-1;
                     shortCutViews.get(pageIndex).setState(false);
                     sortAdapter.notifyItemChanged(pageIndex);
                     shortCutViews.get(webViewIndex).setState(true);
@@ -298,7 +302,7 @@ public class TempEditV4Activity extends BaseActivity {
                     showSetView();
                     break;
                 case 11:
-                    if (circleBar.isShowing())
+                    if (circleBar != null && circleBar.isShowing())
                         circleBar.dismiss();
                     break;
                 case 12:
@@ -324,7 +328,9 @@ public class TempEditV4Activity extends BaseActivity {
                                     Type type = new TypeToken<ShareUrlEntry>() {
                                     }.getType();
                                     ShareUrlEntry urlEntry = gson.fromJson(new String(bytes), type);
-                                    handler.sendEmptyMessage(11);
+//                                    handler.sendEmptyMessage(11);
+                                    if (circleBar != null && circleBar.isShowing())
+                                        circleBar.dismiss();
                                     FileUtil.deleteDirectory(new File(workPath));
                                     FileUtil.deleteDirectory(new File(tempPath));
                                     //删除上传用的临时文件夹
@@ -400,6 +406,7 @@ public class TempEditV4Activity extends BaseActivity {
         container = (LinearLayout) findViewById(R.id.webview_index_container);
         sortRecyclerView = (RecyclerView) findViewById(R.id.avtivity_tempedit_sortLay);
         music_btn = (Button) findViewById(R.id.activity_tempedit_music);
+        modImg = (ImageView) findViewById(R.id.tempedit_mod);
         LinearLayoutManager managers = new LinearLayoutManager(this);
         managers.setOrientation(LinearLayoutManager.HORIZONTAL);
         sortRecyclerView.setLayoutManager(managers);
@@ -621,32 +628,25 @@ public class TempEditV4Activity extends BaseActivity {
             }
         });
 
-//        modImg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                switch ((String) modImg.getTag()) {
-//                    case "mod_3":
-//                        modImg.setBackgroundResource(R.mipmap.mod_4);
-//                        modImg.setTag("mod_4");
-//                        break;
-//                    case "mod_4":
-//                        modImg.setBackgroundResource(R.mipmap.mod_5);
-//                        modImg.setTag("mod_5");
-//                        break;
-//                    case "mod_5":
-//                        modImg.setBackgroundResource(R.mipmap.mod_6);
-//                        modImg.setTag("mod_6");
-//                        break;
-//                    case "mod_6":
-//                        modImg.setVisibility(View.GONE);
-//                        SharedPreferenceUtil.getSharedEditor(TempEditV4Activity.this).putString(
-//                                SharedPreferenceUtil.MOD3, getString(R.string.app_version)
-//                        ).commit();
-//                        Util.imageRecycle(modImg);
-//                        break;
-//                }
-//            }
-//        });
+        modImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch ((String) modImg.getTag()) {
+                    case "mod_1":
+                        SharedPreferenceUtil.getSharedEditor(TempEditV4Activity.this).putString(
+                                SharedPreferenceUtil.MOD1, getString(R.string.app_version)
+                        ).commit();
+                        break;
+                    case "mod_2":
+                        SharedPreferenceUtil.getSharedEditor(TempEditV4Activity.this).putString(
+                                SharedPreferenceUtil.MOD2, getString(R.string.app_version)
+                        ).commit();
+                        break;
+                }
+                modImg.setVisibility(View.GONE);
+                Util.imageRecycle(modImg);
+            }
+        });
     }
 
 
@@ -675,7 +675,7 @@ public class TempEditV4Activity extends BaseActivity {
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
                 handler.sendEmptyMessage(0);
-                Toast.makeText(TempEditV4Activity.this, "getMikey error", Toast.LENGTH_LONG).show();
+                Toast.makeText(TempEditV4Activity.this, "获取模板失败！", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -736,12 +736,6 @@ public class TempEditV4Activity extends BaseActivity {
         SharedPreferenceUtil.getSharedEditor(this).putString(SharedPreferenceUtil.WORK_PATH, workPath).commit();
     }
 
-    private void initWorkPath() {
-        tempPath = FileUtil.TEMP_PATH + "/" + tempEntry.getWorksId();
-        workPath = FileUtil.WORKS_PATH + "/" + miKey;
-        SharedPreferenceUtil.getSharedEditor(this).putString(SharedPreferenceUtil.WORK_PATH, workPath).commit();
-    }
-
     //检查本地文件是否存在
     private boolean checkLocalFile() {
         File file = new File(tempPath);
@@ -792,9 +786,24 @@ public class TempEditV4Activity extends BaseActivity {
         initSort();
         initPreview();
         initEditSet();
+        initUserGuide();
         setListener();
         prepareViewDate();
         initJsConfig();
+    }
+
+    /**
+     * 现实用户引导蒙版
+     */
+    private void initUserGuide() {
+        String value = SharedPreferenceUtil.getSharedPreference(this).getString(
+                SharedPreferenceUtil.MOD1, "0"
+        );
+        if (value.equals("0")) {
+            modImg.setBackgroundResource(R.mipmap.mod_1);
+            modImg.setVisibility(View.VISIBLE);
+            modImg.setTag("mod_1");
+        }
     }
 
 
@@ -1176,7 +1185,7 @@ public class TempEditV4Activity extends BaseActivity {
             params.setMargins(10, 0, 10, 0);
             imageView.setLayoutParams(params);
             imageView.setEnabled(false);
-            imageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.point_background));
+            imageView.setBackgroundResource(R.drawable.point_background);
             container.addView(imageView);
         }
         if (work.getPageSize() > 0)
@@ -1322,6 +1331,12 @@ public class TempEditV4Activity extends BaseActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void sortView() {
+        if (SharedPreferenceUtil.getSharedPreference(this).getString(
+                SharedPreferenceUtil.MOD2, "0").equals("0")) {
+            modImg.setBackgroundResource(R.mipmap.mod_2);
+            modImg.setVisibility(View.VISIBLE);
+            modImg.setTag("mod_2");
+        }
 //        circleBar.show();
         ViewGroup.LayoutParams layoutParams = webView.getLayoutParams();
         webviewWidth = webView.getWidth();
@@ -1332,7 +1347,10 @@ public class TempEditV4Activity extends BaseActivity {
 
         if (webViewIndex >= work.getPageSize())
             webViewIndex = work.getPageSize() - 1;
-        sortBtn.setBackground(getResources().getDrawable(R.drawable.edit_sort_larger));
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+//            sortBtn.setBackground(getResources().getDrawable(R.drawable.edit_sort_larger));
+//        else
+            sortBtn.setBackgroundResource(R.drawable.edit_sort_larger);
         webView.clearCache(true);
 //
 //        urlLoad = "file:///" + work.htmlPath + "?edit=" + EDITINDEX_2 + "&os=android&p=" + webViewIndex;
@@ -1364,7 +1382,10 @@ public class TempEditV4Activity extends BaseActivity {
         container.setVisibility(View.VISIBLE);
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             webView.startAnimation(webScaleBig);
-        sortBtn.setBackground(getResources().getDrawable(R.drawable.edit_sort));
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+//            sortBtn.setBackground(getResources().getDrawable(R.drawable.edit_sort));
+//        else
+            sortBtn.setBackgroundResource(R.drawable.edit_sort);
 //        urlLoad = "file:///" + work.htmlPath + "?edit=" + EDITINDEX_1 + "&os=android&p=" + webViewIndex;
         isSorting = false;
         sortRecyclerView.setVisibility(View.GONE);
@@ -1440,7 +1461,7 @@ public class TempEditV4Activity extends BaseActivity {
             bitmap.recycle();
             webView.destroyDrawingCache();
         } catch (Exception e) {
-            Log.e("shortcut", e.getMessage());
+            Log.e("shortcut", e.getMessage() + "");
         }
     }
 
@@ -1744,7 +1765,9 @@ public class TempEditV4Activity extends BaseActivity {
                 deletUndoWork(miKey + "");
             }
         } else if ((createMod == MODIFY) && !isElementChange) {
-            FileUtil.deleteDirectory(new File(workPath));
+            if (workPath != null) {
+                FileUtil.deleteDirectory(new File(workPath));
+            }
             TempEditV4Activity.this.finish();
         } else {
             dialogExist.show();
@@ -1830,7 +1853,7 @@ public class TempEditV4Activity extends BaseActivity {
         popTitle.setText(tempEntry.getTitle());
         popAuthor.setVisibility(View.GONE);
         popHotPoint.setVisibility(View.GONE);
-        popEdit.setBackgroundDrawable(getResources().getDrawable(R.drawable.to_share_btn));
+        popEdit.setBackgroundResource(R.drawable.to_share_btn);
         popShare.setVisibility(View.GONE);
 
         ViewGroup.LayoutParams paramsE = popEdit.getLayoutParams();
@@ -1858,7 +1881,8 @@ public class TempEditV4Activity extends BaseActivity {
         popContainer.setLayoutParams(params);
 
         popupWindow = new PopupWindow(popView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN)
+            popupWindow.setBackgroundDrawable(new BitmapDrawable());
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
         popupWindow.setAnimationStyle(R.style.popupwindowStyle);
@@ -1897,7 +1921,7 @@ public class TempEditV4Activity extends BaseActivity {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void initEditSet() {
-        setView = inflater.inflate(R.layout.pop_tempedit_set_lay, null);
+        setView = LayoutInflater.from(TempEditV4Activity.this).inflate(R.layout.pop_tempedit_set_lay, null);
         titleEdit = (EditText) setView.findViewById(R.id.edit_set_title);
         passWordEdit = (EditText) setView.findViewById(R.id.edit_set_password_text);
         music = (TextView) setView.findViewById(R.id.edit_set_music_name);
@@ -1913,7 +1937,8 @@ public class TempEditV4Activity extends BaseActivity {
         musicCoverBtn = (Button) setView.findViewById(R.id.edit_set_music_cover_btn);
 
         setWindow = new PopupWindow(setView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
-        setWindow.setBackgroundDrawable(new BitmapDrawable());
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN)
+            setWindow.setBackgroundDrawable(new BitmapDrawable());
         setWindow.setOutsideTouchable(true);
         setWindow.setFocusable(true);
         setWindow.setAnimationStyle(R.style.popupwindowStyle);
@@ -2009,10 +2034,10 @@ public class TempEditV4Activity extends BaseActivity {
             public void onClick(View v) {
                if (isMusicModle) {
                    isMusicModle = false;
-                   musicCoverBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_nouse));
+                   musicCoverBtn.setBackgroundResource(R.mipmap.edit_set_nouse);
                } else {
                    isMusicModle = true;
-                   musicCoverBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_inuse));
+                   musicCoverBtn.setBackgroundResource(R.mipmap.edit_set_inuse);
                }
             }
         });
@@ -2020,7 +2045,7 @@ public class TempEditV4Activity extends BaseActivity {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void showSetView() {
-        if (Util.isStringNotEmpty(musicName) && Util.isStringNotEmpty(musicId)) {
+        if (Util.isStringNotEmpty(dataJsMusic.getMusicName()) && Util.isStringNotEmpty(dataJsMusic.getMusicId())) {
             musicBtn.setClickable(true);
         } else {
             musicBtn.setClickable(false);
@@ -2029,7 +2054,7 @@ public class TempEditV4Activity extends BaseActivity {
             setMusicState(false);
         } else {
             setMusicState(true);
-            music.setText(dataJsMusic.getMusicName());
+//            music.setText(dataJsMusic.getMusicName());
         }
 
         //Util.isStringNotEmpty(passWord)
@@ -2050,20 +2075,27 @@ public class TempEditV4Activity extends BaseActivity {
     private void setMusicState(boolean isMusic) {
         if (isMusic) {
             music_btn.setBackgroundResource(R.mipmap.editor_musiced);
-            music.setText(musicName);
-            musicImg.setBackground(getResources().getDrawable(R.mipmap.edit_set_song));
-            musicBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_inuse));
+            music.setText(dataJsMusic.getMusicName());
+//            musicImg.setBackground(getResources().getDrawable(R.mipmap.edit_set_song));
+            musicImg.setBackgroundResource(R.mipmap.edit_set_song);
+//            musicBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_inuse));
+            musicBtn.setBackgroundResource(R.mipmap.edit_set_inuse);
+
             if (isMusicModle) {
-                musicCoverBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_inuse));
+//                musicCoverBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_inuse));
+                musicCoverBtn.setBackgroundResource(R.mipmap.edit_set_inuse);
             } else {
-                musicCoverBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_nouse));
+//                musicCoverBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_nouse));
+                musicCoverBtn.setBackgroundResource(R.mipmap.edit_set_nouse);
             }
             music_cover_lay.setVisibility(View.VISIBLE);
         } else {
             music_btn.setBackgroundResource(R.mipmap.editor_music);
             music.setText(R.string.no_music);
-            musicImg.setBackground(getResources().getDrawable(R.mipmap.edit_set_nosong));
-            musicBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_nouse));
+//            musicImg.setBackground(getResources().getDrawable(R.mipmap.edit_set_nosong));
+            musicImg.setBackgroundResource(R.mipmap.edit_set_nosong);
+//            musicBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_nouse));
+            musicBtn.setBackgroundResource(R.mipmap.edit_set_nouse);
             music_cover_lay.setVisibility(View.GONE);
         }
     }
@@ -2071,15 +2103,15 @@ public class TempEditV4Activity extends BaseActivity {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void setPassWordState(boolean isPassWord) {
         if (isPassWord) {
-            passImg.setBackground(getResources().getDrawable(R.mipmap.edit_set_lock));
+            passImg.setBackgroundResource(R.mipmap.edit_set_lock);
             passWordEdit.setVisibility(View.VISIBLE);
             pass.setVisibility(View.GONE);
-            passBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_inuse));
+            passBtn.setBackgroundResource(R.mipmap.edit_set_inuse);
         } else {
-            passImg.setBackground(getResources().getDrawable(R.mipmap.edit_set_nolock));
+            passImg.setBackgroundResource(R.mipmap.edit_set_nolock);
             passWordEdit.setVisibility(View.GONE);
             pass.setVisibility(View.VISIBLE);
-            passBtn.setBackground(getResources().getDrawable(R.mipmap.edit_set_nouse));
+            passBtn.setBackgroundResource(R.mipmap.edit_set_nouse);
         }
     }
 
@@ -2154,6 +2186,7 @@ public class TempEditV4Activity extends BaseActivity {
                             }
                             music_btn.setBackgroundResource(R.mipmap.editor_musiced);
                         } else {
+                            dataJsMusic = new DataJsMusic("", "", "", "");
                             isMusicInUse = false;
                             music_btn.setBackgroundResource(R.mipmap.editor_music);
                         }
@@ -2401,13 +2434,12 @@ public class TempEditV4Activity extends BaseActivity {
         httpClient.post(url, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                Log.e("updateWorkDetial", new String(bytes));
+                Log.e("updateWorkDetial", new String(bytes) + "");
                 handler.sendEmptyMessage(13);
             }
 
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-                Log.e("error updateWorkDetial", new String(bytes));
                 if (circleBar.isShowing())
                     circleBar.dismiss();
                 Toast.makeText(TempEditV4Activity.this, "updateWorkDetail 接口失败！", Toast.LENGTH_LONG).show();

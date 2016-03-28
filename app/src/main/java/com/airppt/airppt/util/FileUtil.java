@@ -91,15 +91,19 @@ public class FileUtil {
      * @param dir 文件夹目录
      */
     public static boolean deleteDirectory(File dir) {
-        if (!dir.exists())
-            return true;
-        if (dir.isDirectory()) {
-            File[] listFiles = dir.listFiles();
-            for (int i = 0; i < listFiles.length; i++) {
-                deleteDirectory(listFiles[i]);
+        try {
+            if (!dir.exists())
+                return true;
+            if (dir.isDirectory()) {
+                File[] listFiles = dir.listFiles();
+                for (int i = 0; i < listFiles.length; i++) {
+                    deleteDirectory(listFiles[i]);
+                }
             }
+            return dir.delete();
+        } catch (Exception ex) {
+            return false;
         }
-        return dir.delete();
     }
 
     /**

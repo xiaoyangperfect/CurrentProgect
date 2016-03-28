@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.airppt.airppt.R;
 import com.airppt.airppt.adapter.PhotoFilterAdapter;
@@ -123,6 +124,8 @@ public class PhotoCropActivity extends BaseActivity {
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(manager);
         bitmap = ImageOptUtil.getBitMapByPath(path);
+        if (bitmap == null)
+            PhotoCropActivity.this.finish();
         int degree = readPictureDegree(path);
         bitmap = rotaingImageView(degree, bitmap);
         Log.e("CropImage", "PhotoCropActivity set img");
@@ -133,21 +136,24 @@ public class PhotoCropActivity extends BaseActivity {
         adapter.setOnClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if (position == 0) {
-                    if (filterBitmap != null) {
-                        filterBitmap.recycle();
-                    }
+                try {
+                    if (position == 0) {
+                        if (filterBitmap != null) {
+                            filterBitmap.recycle();
+                        }
 //                    bitmap = ImageOptUtil.getBitMapByPath(path);
-                    setCropImageView(bitmap, false);
-                } else {
-                    if (filterBitmap != null) {
-                        filterBitmap.recycle();
+                        setCropImageView(bitmap, false);
+                    } else {
+                        if (filterBitmap != null) {
+                            filterBitmap.recycle();
+                        }
+                        mGPUImage.setFilter(filters.get(position).getFilter());
+                        filterBitmap = mGPUImage.getBitmapWithFilterApplied(bitmap);
+                        setCropImageView(filterBitmap, false);
                     }
-                    mGPUImage.setFilter(filters.get(position).getFilter());
-                    filterBitmap = mGPUImage.getBitmapWithFilterApplied(bitmap);
-                    setCropImageView(filterBitmap, false);
+                } catch (OutOfMemoryError error) {
+                    Toast.makeText(PhotoCropActivity.this, R.string.oom, Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         Log.e("CropImage", "PhotoCropActivity is OK");
@@ -263,14 +269,17 @@ public class PhotoCropActivity extends BaseActivity {
     * @return Bitmap
     */
     public static Bitmap rotaingImageView(int angle , Bitmap bitmap) {
-        //旋转图片 动作
-        Matrix matrix = new Matrix();;
-        matrix.postRotate(angle);
-        System.out.println("angle2=" + angle);
-        // 创建新的图片
-        Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0,
-                bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-        return resizedBitmap;
+        try {
+            //旋转图片 动作
+            Matrix matrix = new Matrix();;
+            matrix.postRotate(angle);
+            // 创建新的图片
+            Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0,
+                    bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+            return resizedBitmap;
+        } catch (RuntimeException e) {
+            return bitmap;
+        }
     }
 
     @Override

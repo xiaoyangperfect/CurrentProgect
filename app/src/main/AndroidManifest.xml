@@ -21,12 +21,11 @@
         <activity android:name="com.airppt.airppt.activity.LoginActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.airppt.airppt.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name="com.airppt.airppt.activity.PhotoPathShowActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.airppt.airppt.activity.AllPhotoShowActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.airppt.airppt.activity.ChoiceModelActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.airppt.airppt.activity.ChoicePhotoActivity"
             android:screenOrientation="portrait"/>
@@ -94,6 +93,7 @@
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

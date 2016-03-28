@@ -9,7 +9,7 @@ import android.view.View;
  * Created by yang on 2015/6/17.
  */
 public class ScreenShortCutUtil {
-    public static Bitmap getShortScreen(Activity activity) throws Exception{
+    public static Bitmap getShortScreen(Activity activity) {
         try {
             //View是你需要截图的View
             View view = activity.getWindow().getDecorView();
@@ -31,8 +31,8 @@ public class ScreenShortCutUtil {
             view.destroyDrawingCache();
             b1.recycle();
             return b;
-        } catch (Exception ex) {
-         throw new Exception();
+        } catch (OutOfMemoryError ex) {
+            return null;
         }
     }
 }

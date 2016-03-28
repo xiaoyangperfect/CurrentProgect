@@ -421,10 +421,8 @@ public class FragmentSearch extends Fragment {
      * @param position 点击列表位置
      */
     private void showPopWindow(int position) {
-        try {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
             FastBlur.blur(getActivity(), ScreenShortCutUtil.getShortScreen(getActivity()), popView);
-        } catch (Exception ex) {
-
         }
         float baseWidth = imgWidth * 2 - DPIUtil.dip2px(getActivity(), 80);
         int baseHight = 0;
@@ -456,6 +454,7 @@ public class FragmentSearch extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!Util.isStringNotEmpty(userId)) {
+                    popupWindow.dismiss();
                     Util.toLogin(getActivity());
                 } else {
                     Intent intent = new Intent(getActivity(), TempEditV4Activity.class);
@@ -480,7 +479,7 @@ public class FragmentSearch extends Fragment {
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                mWebView.reload();
+                mWebView.loadUrl(HttpConfig.BASE_URL);
             }
         });
 
@@ -488,6 +487,7 @@ public class FragmentSearch extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!Util.isStringNotEmpty(userId)) {
+                    popupWindow.dismiss();
                     Util.toLogin(getActivity());
                 } else {
                     userFeedBack(worksEntry.getWorksId());

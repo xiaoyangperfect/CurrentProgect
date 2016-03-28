@@ -36,7 +36,7 @@ public class DPIUtil {
         return (int) (pxValue / fontScale + 0.5f);  
     }
 	/**
-	 * 获取屏幕宽高 这是个别扭的方法
+	 * 获取屏幕宽高 这是个别扭的方法; 每次看到都蛋疼
 	 * @param act
 	 */
 	public static WH getScreenMetrics(Activity act){

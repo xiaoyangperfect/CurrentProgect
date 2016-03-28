@@ -172,24 +172,28 @@ public class ImageOptUtil {
      * @return 根据路径获取到的压缩后的bitmap
      */
     public static Bitmap getBitMapByPath(String path) {
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        Bitmap bitmap = BitmapFactory.decodeFile(path, options);
-        int w = options.outWidth;
-        int h = options.outHeight;
-        float width = DPIUtil.screen_width;
-        float high = DPIUtil.screen_height;
-        if(w > width || h > high) {
-            int dw = (int) (w/width);
-            int dh = (int) (h/high);
-            options.inSampleSize = dw>dh?dw:dh;
+        try {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+            int w = options.outWidth;
+            int h = options.outHeight;
+            float width = DPIUtil.screen_width;
+            float high = DPIUtil.screen_height;
+            if(w > width || h > high) {
+                int dw = (int) (w/width);
+                int dh = (int) (h/high);
+                options.inSampleSize = dw>dh?dw:dh;
 //            options.inSampleSize = 1;
-        } else {
-            options.inSampleSize = 1;
+            } else {
+                options.inSampleSize = 1;
+            }
+            options.inJustDecodeBounds = false;
+            bitmap = BitmapFactory.decodeFile(path, options);
+            return bitmap;
+        } catch (OutOfMemoryError oom) {
+            return null;
         }
-        options.inJustDecodeBounds = false;
-        bitmap = BitmapFactory.decodeFile(path, options);
-        return bitmap;
     }
 
     /**

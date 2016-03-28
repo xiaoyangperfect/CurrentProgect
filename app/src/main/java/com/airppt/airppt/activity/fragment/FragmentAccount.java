@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -508,10 +509,8 @@ public class FragmentAccount extends Fragment {
 
         initPopListener();
 
-        try {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
             FastBlur.blur(getActivity(), ScreenShortCutUtil.getShortScreen(getActivity()), popView);
-        } catch (Exception ex) {
-
         }
         mWebView.loadUrl(entry.getData().getPreview_url());
         popTitle.setText(entry.getData().getTitle());
@@ -587,7 +586,7 @@ public class FragmentAccount extends Fragment {
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                mWebView.reload();
+                mWebView.loadUrl(HttpConfig.BASE_URL);
             }
         });
 
